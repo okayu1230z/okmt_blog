@@ -1,6 +1,6 @@
 ---
-title: "Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る"
-subtitle: "Apply the theme to Hugo & Create a multi-stage builds docker environment"
+title: "Hugoにテーマを適用し、ビルドしてNginxでデプロイするDocker環境を作る"
+subtitle: "Apply the theme to Hugo & Create a Docker environment to build and deploy with Nginx"
 date: 2021-08-28T00:00:00+09:00
 lastmod: 2021-08-28T00:00:00+09:00
 #author: "okmt"
