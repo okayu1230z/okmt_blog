@@ -1,0 +1,9 @@
+
+https://hugoloveit.com/
+
+Current environment is "development". The "comment system", "CDN" and "fingerprint" will be disabled.
+当前运行环境是 "development". "评论系统", "CDN" 和 "fingerprint" 不会启用.
+Error: Error building site: failed to render pages: render of "page" failed: execute of template failed: template: posts/single.html:92:124: executing "content" at <partial "function/content.html">: error calling partial: "/Users/okmt/Play/ssg/hugo/loveit/themes/LoveIt/layouts/partials/function/content.html:15:15": execute of template failed: template: partials/function/content.html:15:15: executing "partials/function/content.html" at <partial "function/checkbox.html" $content>: error calling partial: partial that returns a value needs a non-zero argument.
+Built in 58 ms
+
+https://zhuanlan.zhihu.com/p/262906525

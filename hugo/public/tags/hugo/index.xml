@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hugo - Tag - okmt&#39;s blogs</title>
+        <link>http://example.org/tags/hugo/</link>
+        <description>Hugo - Tag - okmt&#39;s blogs</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>yuki.okamoto@okmt.dev (okmt)</managingEditor>
+            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</lastBuildDate><atom:link href="http://example.org/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る</title>
+    <link>http://example.org/hugo/</link>
+    <pubDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://example.org/hugo/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/hugo/images/hugo.png" referrerpolicy="no-referrer">
+            </div>静的サイトジェネレータ（Static Site Generator） SSGは入力ファイルから静的ページを構築するためのツール
+表で紹介するものはMarkdownコンテンツを取り込み、テンプレートを適用してCMS用ですぐ利用できるもので、本 Blog では Hugo を使っている
+   SSG Framework Lang Description     Hugo Golang ナウいしビルド早い   Gatsby JavaScript (React) ナウいしテーマ多い   Jykill Ruby 古い    表に知名度と自由度の高い Next.js Nuxt.js は入れてないヨ
+動的 CMS には WordPress なんかがあって、これはユーザがサイトにアクセスするたびに必要に応じてページを構築する
+静的 CMS は Adobe Dreamweaver や Movable Typed 等でこれは SSG と同じ仕組みで動いている
+実は自分用のメモとかには Jykill 使ってて、ローカルに Git Repository 立ててメモを管理している
+記事やメモを色んな Server から Origin にアップし続けるだけでドキュメントがウェブサービスで見れるようになるので便利だなー、と。
+体感したことはないけど、Jykill は Hugo なんかよりビルド速度がかなり遅いらしい]]></description>
+</item></channel>
+</rss>

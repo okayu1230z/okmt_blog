@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  hugo:
+    build: ./hugo
+    volumes:
+      - ${PWD}/hugo:/src
+  nginx:
+    build: ./nginx
+    depends_on:
+      - hugo
+    ports:
+      - "80:80"
+    volumes:
+      - ./hugo/public:/usr/share/nginx/html
