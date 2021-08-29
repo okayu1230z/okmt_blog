@@ -1,8 +1,9 @@
 ---
-title: "Hugoにテーマを適用し、ビルドしてNginxでデプロイするDocker環境を作る"
-subtitle: "Apply the theme to Hugo & Create a Docker environment to build and deploy with Nginx"
+title: "Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る"
+subtitle: "Apply the theme to Hugo & Create a Docker environment to automation build and deploy with Nginx"
 date: 2021-08-28T00:00:00+09:00
 lastmod: 2021-08-28T00:00:00+09:00
+publishDate: 2021-08-28T00:00:00+09:00
 #author: "okmt"
 #authorLink: "okmtLink"
 #description: "okmtDesc"
@@ -127,7 +128,7 @@ $$ \ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-} $$
 
 ## Docker でビルドしてデプロイ
 
-{{< figure src="/hugo/images/docker.png" title="Lighthouse (figure)" >}}
+{{< figure src="/hugo/images/docker.png" >}}
 
 Hugo を Docker で扱うには、[こんなイメージ](https://hub.docker.com/r/klakegg/hugo/)もあるのでそれを利用して、Deployまで持っていけると思う
 
@@ -138,7 +139,8 @@ hugo server は公式では「A high performance webserver」って紹介され�
 > Many run it in production, but the standard behavior is for people to use it in development and use a more full featured server such as Nginx or Caddy.
 
 ということでもあるのでこだわる人は Apache やら Nginx に乗り換えるのが良さそう
-Hugo が動く Dockerfile は発見
+
+とりま Hugo が動く Dockerfile は発見
 
 [Dockerfile | hugo-extended-docker](https://github.com/peaceiris/hugo-extended-docker/blob/main/Dockerfile)
 
@@ -160,10 +162,10 @@ Build も Deploy も Theme には依存していないので任意の hugo proje
 
 hugo の Build 早いなぁ、Nginx の server 起動の方が時間かかってそう
 
-FROMが複数あるDockerfileを作成する一般で言われるところの[マルチステージビルド](https://docs.docker.com/develop/develop-images/multi-stage-build/)にはなっていないので注意すること
+FROMが複数あるDockerfileを docker docs で言われるところの[マルチステージビルド](https://docs.docker.com/develop/develop-images/multistage-build/)にはなっていないので注意すること
 
 {{< admonition type=tip title="マルチステージビルド(multi stage build)" open=false >}}
-マルチステージビルドはめっちゃ簡単にいうと Dockerfile に FROM が複数指定されていて、レイヤをできる限り小さく保ち、各レイヤごとに必要なものを小さくし、効率的なビルド環境を構築すること
+マルチステージビルドはめっちゃ簡単にいうと Dockerfile に FROM が複数指定されていて、各レイヤをできる限り小さく保ち、効率的なビルド環境を構築すること
 {{< /admonition >}}
 
 こんな感じの記事を月一くらいで書けたらな、と思っているので良いなと思ったら記事のシェアとかTwitterをフォローしてください。
