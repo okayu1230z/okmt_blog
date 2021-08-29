@@ -5,7 +5,7 @@
         <description>Documentation - Category - okmt&#39;s blogs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>yuki.okamoto@okmt.dev (okmt)</managingEditor>
             <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</lastBuildDate><atom:link href="http://example.org/categories/documentation/" rel="self" type="application/rss+xml" /><item>
-    <title>Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る</title>
+    <title>Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る</title>
     <link>http://example.org/hugo/</link>
     <pubDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</pubDate>
     <author>Author</author>

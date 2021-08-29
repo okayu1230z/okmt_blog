@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る - okmt&#39;s blogs</title><meta name="Description" content=""><meta property="og:title" content="Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る" />
+        <title>Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る - okmt&#39;s blogs</title><meta name="Description" content=""><meta property="og:title" content="Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る" />
 <meta property="og:description" content="静的サイトジェネレータ（Static Site Generator） SSGは入力ファイルから静的ページを構築するためのツール
 表で紹介するものはMarkdownコンテンツを取り込み、テンプレートを適用してCMS用ですぐ利用できるもので、本 Blog では Hugo を使っている
    SSG Framework Lang Description     Hugo Golang ナウいしビルド早い   Gatsby JavaScript (React) ナウいしテーマ多い   Jykill Ruby 古い    表に知名度と自由度の高い Next.js Nuxt.js は入れてないヨ
@@ -20,7 +20,7 @@
 <meta property="article:modified_time" content="2021-08-28T00:00:00+09:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る"/>
+<meta name="twitter:title" content="Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る"/>
 <meta name="twitter:description" content="静的サイトジェネレータ（Static Site Generator） SSGは入力ファイルから静的ページを構築するためのツール
 表で紹介するものはMarkdownコンテンツを取り込み、テンプレートを適用してCMS用ですぐ利用できるもので、本 Blog では Hugo を使っている
    SSG Framework Lang Description     Hugo Golang ナウいしビルド早い   Gatsby JavaScript (React) ナウいしテーマ多い   Jykill Ruby 古い    表に知名度と自由度の高い Next.js Nuxt.js は入れてないヨ
@@ -32,16 +32,16 @@
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/hugo/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/hugo/" /><link rel="next" href="http://example.org/lpic1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る",
+        "headline": "Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/hugo\/"
-        },"genre": "posts","keywords": "Static Site Generator, Hugo, Docker, Onpremise","wordcount":  246 ,
+        },"genre": "posts","keywords": "Static Site Generator, Hugo, Docker, Onpremise","wordcount":  248 ,
         "url": "http:\/\/example.org\/hugo\/","datePublished": "2021-08-28T00:00:00+09:00","dateModified": "2021-08-28T00:00:00+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -116,9 +116,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る</h1><h2 class="single-subtitle">Apply the theme to Hugo &amp; Create a multi-stage builds docker environment</h2><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る</h1><h2 class="single-subtitle">Apply the theme to Hugo &amp; Create a Docker environment to automation build and deploy with Nginx</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.okmt.dev/portfolio/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>okmt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="28288-80-80">28288-80-80</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;246 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-28">2021-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;248 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -227,9 +227,7 @@
 <pre><code>$ convert hogehoge.png -quality 100 hogehoge.jpg
 </code></pre>
 <h2 id="docker-でビルドしてデプロイ">Docker でビルドしてデプロイ</h2>
-<figure><img src="/hugo/images/docker.png"/><figcaption>
-            <h4>Lighthouse (figure)</h4>
-        </figcaption>
+<figure><img src="/hugo/images/docker.png"/>
 </figure>
 
 <p>Hugo を Docker で扱うには、<a href="https://hub.docker.com/r/klakegg/hugo/" target="_blank" rel="noopener noreffer">こんなイメージ</a>もあるのでそれを利用して、Deployまで持っていけると思う</p>
@@ -238,8 +236,8 @@
 <blockquote>
 <p>Many run it in production, but the standard behavior is for people to use it in development and use a more full featured server such as Nginx or Caddy.</p>
 </blockquote>
-<p>ということでもあるのでこだわる人は Apache やら Nginx に乗り換えるのが良さそう
-Hugo が動く Dockerfile は発見</p>
+<p>ということでもあるのでこだわる人は Apache やら Nginx に乗り換えるのが良さそう</p>
+<p>とりま Hugo が動く Dockerfile は発見</p>
 <p><a href="https://github.com/peaceiris/hugo-extended-docker/blob/main/Dockerfile" target="_blank" rel="noopener noreffer">Dockerfile | hugo-extended-docker</a></p>
 <p>これを元に作ってみる</p>
 <h3 id="docker-compose-によるビルド">docker-compose によるビルド</h3>
@@ -256,13 +254,13 @@ Hugo が動く Dockerfile は発見</p>
 </div><p>で hugo による build が走り、変更が反映されて Nginx で配信される</p>
 <p>Build も Deploy も Theme には依存していないので任意の hugo project に使用できると思います。</p>
 <p>hugo の Build 早いなぁ、Nginx の server 起動の方が時間かかってそう</p>
-<p>FROMが複数あるDockerfileを作成する一般で言われるところの<a href="https://docs.docker.com/develop/develop-images/multi-stage-build/" target="_blank" rel="noopener noreffer">マルチステージビルド</a>にはなっていないので注意すること</p>
+<p>FROMが複数あるDockerfileを docker docs で言われるところの<a href="https://docs.docker.com/develop/develop-images/multistage-build/" target="_blank" rel="noopener noreffer">マルチステージビルド</a>にはなっていないので注意すること</p>
 <div class="details admonition tip">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>マルチステージビルド(multi stage build)<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">マルチステージビルドはめっちゃ簡単にいうと Dockerfile に FROM が複数指定されていて、レイヤをできる限り小さく保ち、各レイヤごとに必要なものを小さくし、効率的なビルド環境を構築すること</div>
+            <div class="admonition-content">マルチステージビルドはめっちゃ簡単にいうと Dockerfile に FROM が複数指定されていて、各レイヤをできる限り小さく保ち、効率的なビルド環境を構築すること</div>
         </div>
     </div>
 <p>こんな感じの記事を月一くらいで書けたらな、と思っているので良いなと思ったら記事のシェアとかTwitterをフォローしてください。</p>
@@ -270,7 +268,7 @@ Hugo が動く Dockerfile は発見</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 28288-80-80</span>
+                <span>Updated on 2021-08-28</span>
             </div>
             <div class="post-info-license"><span>MIT</span></div>
         </div>
@@ -279,7 +277,7 @@ Hugo が動く Dockerfile は発見</p>
                             <a class="link-to-markdown" href="/hugo/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/hugo/" data-title="Hugoにテーマを適用し、マルチステージビルドなDocker環境を作る" data-via="okmtok" data-hashtags="Static Site Generator,Hugo,Docker,Onpremise"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/hugo/" data-hashtag="Static Site Generator"><i class="fab fa-facebook-square fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/hugo/" data-title="Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る" data-via="okmtok" data-hashtags="Static Site Generator,Hugo,Docker,Onpremise"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/hugo/" data-hashtag="Static Site Generator"><i class="fab fa-facebook-square fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -291,7 +289,8 @@ Hugo が動く Dockerfile は発見</p>
         </section>
     </div>
 
-    <div class="post-nav"></div>
+    <div class="post-nav">
+            <a href="/lpic1/" class="next" rel="next" title="LPIC level 1を取得した">LPIC level 1を取得した<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">

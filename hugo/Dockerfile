@@ -38,4 +38,3 @@ RUN apk add --update-cache --no-cache --virtual .build-deps wget && \
 
 WORKDIR /src
 ENTRYPOINT ["/usr/bin/hugo"]
-#RUN /usr/bin/hugo
