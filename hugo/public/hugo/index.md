@@ -128,7 +128,7 @@ hugo の Build 早いなぁ、Nginx の server 起動の方が時間かかって
 
 FROMが複数あるDockerfileを docker docs で言われるところの[マルチステージビルド](https://docs.docker.com/develop/develop-images/multistage-build/)にはなっていないので注意すること
 
-{{< admonition type=tip title="マルチステージビルド(multi stage build)" open=false >}}
+{{< admonition type=tip title="マルチステージビルド(multi stage build)" open=true >}}
 マルチステージビルドはめっちゃ簡単にいうと Dockerfile に FROM が複数指定されていて、各レイヤをできる限り小さく保ち、効率的なビルド環境を構築すること
 {{< /admonition >}}
 
