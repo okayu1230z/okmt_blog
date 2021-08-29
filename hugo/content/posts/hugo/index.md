@@ -152,7 +152,7 @@ hugo server は公式では「A high performance webserver」って紹介され�
 
 [hugo_nginx](https://github.com/okayu1230z/okmt_blog)
 
-```md
+```
 version: '3'
 
 services:

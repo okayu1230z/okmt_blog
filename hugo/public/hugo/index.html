@@ -41,7 +41,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/hugo\/"
-        },"genre": "posts","keywords": "Static Site Generator, Hugo, Docker, Onpremise","wordcount":  248 ,
+        },"genre": "posts","keywords": "Static Site Generator, Hugo, Docker, Onpremise","wordcount":  291 ,
         "url": "http:\/\/example.org\/hugo\/","datePublished": "2021-08-28T00:00:00+09:00","dateModified": "2021-08-28T00:00:00+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -118,7 +118,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る</h1><h2 class="single-subtitle">Apply the theme to Hugo &amp; Create a Docker environment to automation build and deploy with Nginx</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.okmt.dev/portfolio/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>okmt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>Documentation</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-28">2021-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;248 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-28">2021-08-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;291 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -243,6 +243,44 @@
 <h3 id="docker-compose-によるビルド">docker-compose によるビルド</h3>
 <p>出来上がった docker-compose はこんな感じ</p>
 <p><a href="https://github.com/okayu1230z/okmt_blog" target="_blank" rel="noopener noreffer">hugo_nginx</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">version: &#39;3&#39;
+
+services:
+  hugo:
+    build: ./hugo
+    volumes:
+      - ${PWD}/hugo:/src
+  nginx:
+    build: ./nginx
+    depends_on:
+      - hugo
+    ports:
+      - &#34;8081:80&#34;
+    volumes:
+      - ./hugo/public:/usr/share/nginx/html
+</code></pre></td></tr></table>
+</div>
+</div><p>hugo image で build し、nginx で出来上がった静的ファイルを配信している</p>
+<p>これを使用方法は</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
