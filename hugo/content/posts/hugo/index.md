@@ -152,6 +152,28 @@ hugo server は公式では「A high performance webserver」って紹介され�
 
 [hugo_nginx](https://github.com/okayu1230z/okmt_blog)
 
+```md
+version: '3'
+
+services:
+  hugo:
+    build: ./hugo
+    volumes:
+      - ${PWD}/hugo:/src
+  nginx:
+    build: ./nginx
+    depends_on:
+      - hugo
+    ports:
+      - "8081:80"
+    volumes:
+      - ./hugo/public:/usr/share/nginx/html
+```
+
+hugo image で build し、nginx で出来上がった静的ファイルを配信している
+
+これを使用方法は
+
 ```sh
 $ docker-compose up
 ```
