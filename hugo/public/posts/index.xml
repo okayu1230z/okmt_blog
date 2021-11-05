@@ -1,15 +1,60 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - okmt&#39;s blogs</title>
-        <link>http://example.org/posts/</link>
+        <link>http://www.okmt.dev/posts/</link>
         <description>All Posts | okmt&#39;s blogs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>yuki.okamoto@okmt.dev (okmt)</managingEditor>
-            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Sun, 29 Aug 2021 00:00:00 &#43;0900</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</lastBuildDate><atom:link href="http://www.okmt.dev/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker を学んでみよう（本読み感想含む）</title>
+    <link>http://www.okmt.dev/docker/</link>
+    <pubDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://www.okmt.dev/docker/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/docker/images/docker.png" referrerpolicy="no-referrer">
+            </div>Docker と勉強方法 Docker とはなんぞや？
+Docker  公式のドキュメント   開発中のソフトウェアを他のエンジニアと共有したり、
+プロトタイプをサクッと試してもらいたい時などはもはや必須といえるんじゃなかろうか。
+無料だし（なんか最近有料化の流れもあるけど）
+この記事では、Docker の使い方と（ちょっと）仕組みと（ちょっと）周辺技術をまとめてみたのでそれらを紹介する
+書籍に書いてある内容とこの記事の中身は違うので気になる人は実際に読んでみてね
+参考書の紹介 docker docs
+公式の文章は重要なのですが、今回は言葉の定義を確認したいときなどを中心に辞書的に使いました。
+さわって学ぶクラウドインフラ docker基礎からのコンテナ構築 | 日経BP
+タイトルは&quot;クラウド&quot;に限定されているように見えるが中身はタイトルほど&quot;クラウド&quot;に限定していないように見える
+そもそも Docker は&quot;クラウド&quot;のためだけのインフラでないことは明確ですが、 それだけにこのタイトルの場合はもう少しクラウド取り扱っていても良かったのかなぁと
+内容的に少しだけ引っかかるところがあったのでそれは本記事の最後にまとめておくわね。
+図表は分かりやすかった！
+Docker | O&rsquo;REILLY
+難易度としては上の本よりも数段上にあり、Docker や Docker の構成要素を少し深くまで学習することができた
+Ansible や Trition などの Docker が関連するソフトウェアも幅広く紹介していて、知識の幅も広がる
+一方でポイントを絞って学ぶという観点では範囲が広すぎるので、 「俺は使うのに必要最小限の知識だけあればいいぜ！」という人には向いていないかも知れない本
+幅広く、でも重要なところは取りこぼしたくなので、上の本と組み合わせて学習することに
+結果、1ヶ月もせずあんなに知らんかった Docker の理解が確実に進んだのでこの学習方法は合う人には合うかも
+Docker まとめ Docker を使うと、host OS との resource 共有、Container の Portability、軽量なので実動環境そのままの分散システムを emulate できたりと、メリットたくさんあるよ
+Docker は scale-out が容易に行えるので micro service も use case として挙げられるよ]]></description>
+</item><item>
+    <title>Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage</title>
+    <link>http://www.okmt.dev/ccas/</link>
+    <pubDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://www.okmt.dev/ccas/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/ccas/images/ccas.jpg" referrerpolicy="no-referrer">
+            </div>Compact-CAS (Compact-CameraAndStorage) 日本では、監視カメラシステムの設置は非常に高い
+高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
+さらに、昨今の人工知能分野の発展で画像さえあれば何か面白いことができてしまうのでできることならデータをたくさん蓄えておきたい
+さて、日本の製品としての監視カメラシステムはどれくらい高いのか？
+初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
+しかし、この大金の捻出はIoTの民主化で解決できる
+今日は Compact-CAS を紹介したい
+Compact-CAS (Compact-CameraAndStorage)  This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e.]]></description>
+</item><item>
     <title>LPIC level 1を取得した</title>
-    <link>http://example.org/lpic1/</link>
+    <link>http://www.okmt.dev/lpic1/</link>
     <pubDate>Sun, 29 Aug 2021 00:00:00 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>http://example.org/lpic1/</guid>
+    <guid>http://www.okmt.dev/lpic1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/lpic1/images/lpic1.png" referrerpolicy="no-referrer">
             </div>LPIC（Linux Professional Institute Certification） Linux と仲良くするために区切りもあった方が良いだろうと資格調べてたらこれに出会ったし、電光石火の如く資格を取得してきた
@@ -31,10 +76,10 @@ LPIC (Linux Professional Institute Certification)  Linux Essentials は、Linux 
 「コマンドの結果が印刷される」って問題文があったので、cups (common UNIX printing system) の話かと思ったけど、]]></description>
 </item><item>
     <title>Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る</title>
-    <link>http://example.org/hugo/</link>
+    <link>http://www.okmt.dev/hugo/</link>
     <pubDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</pubDate>
     <author>Author</author>
-    <guid>http://example.org/hugo/</guid>
+    <guid>http://www.okmt.dev/hugo/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/hugo/images/hugo.png" referrerpolicy="no-referrer">
             </div>静的サイトジェネレータ（Static Site Generator） SSGは入力ファイルから静的ページを構築するためのツール

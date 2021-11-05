@@ -7,7 +7,7 @@ lastmod: 2021-10-01T00:00:00+09:00
 #authorLink: "okmtLink"
 #description: "okmtDesc"
 license: "MIT"
-draft: false
+draft: true
 
 tags: [Static Site Generator, Hugo, Docker, Onpremise]
 categories: [Documentation]

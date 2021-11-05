@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage - okmt&#39;s blogs</title><meta name="Description" content=""><meta property="og:title" content="Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage" />
+<meta property="og:description" content="Compact-CAS (Compact-CameraAndStorage) 日本では、監視カメラシステムの設置は非常に高い
+高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
+さらに、昨今の人工知能分野の発展で画像さえあれば何か面白いことができてしまうのでできることならデータをたくさん蓄えておきたい
+さて、日本の製品としての監視カメラシステムはどれくらい高いのか？
+初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
+しかし、この大金の捻出はIoTの民主化で解決できる
+今日は Compact-CAS を紹介したい
+Compact-CAS (Compact-CameraAndStorage)  This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.okmt.dev/ccas/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-01T00:00:00+09:00" />
+<meta property="article:modified_time" content="2021-09-01T00:00:00+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage"/>
+<meta name="twitter:description" content="Compact-CAS (Compact-CameraAndStorage) 日本では、監視カメラシステムの設置は非常に高い
+高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
+さらに、昨今の人工知能分野の発展で画像さえあれば何か面白いことができてしまうのでできることならデータをたくさん蓄えておきたい
+さて、日本の製品としての監視カメラシステムはどれくらい高いのか？
+初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
+しかし、この大金の捻出はIoTの民主化で解決できる
+今日は Compact-CAS を紹介したい
+Compact-CAS (Compact-CameraAndStorage)  This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.okmt.dev/ccas/" /><link rel="prev" href="http://www.okmt.dev/lpic1/" /><link rel="next" href="http://www.okmt.dev/docker/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/www.okmt.dev\/ccas\/"
+        },"genre": "posts","keywords": "Certification, LPIC, Linux","wordcount":  461 ,
+        "url": "http:\/\/www.okmt.dev\/ccas\/","datePublished": "2021-09-01T00:00:00+09:00","dateModified": "2021-09-01T00:00:00+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "okmt"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="okmt&#39;s blogs">okmt&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="okmt&#39;s blogs">okmt&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage</h1><h2 class="single-subtitle">CCAS (Compact-CameraAndStorage)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.okmt.dev/portfolio/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>okmt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/diary/"><i class="far fa-folder fa-fw"></i>Diary</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-01">2021-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;461 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/ccas/images/ccas.jpg"
+        data-srcset="/ccas/images/ccas.jpg, /ccas/images/ccas.jpg 1.5x, /ccas/images/ccas.jpg 2x"
+        data-sizes="auto"
+        alt="/ccas/images/ccas.jpg"
+        title="/ccas/images/ccas.jpg" /></div><div class="details toc" id="toc-static"  kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#compact-cas-compact-cameraandstorage">Compact-CAS (Compact-CameraAndStorage)</a></li>
+    <li><a href="#pssh-を使った-rpi-の複数台セッティング">pssh を使った RPi の複数台セッティング</a></li>
+    <li><a href="#usbtemper">USBTemper</a>
+      <ul>
+        <li><a href="#ubuntu-2004-on-rpi-に-hcitool-をインストールする">Ubuntu 20.04 on RPi に hcitool をインストールする</a></li>
+      </ul>
+    </li>
+    <li><a href="#終わりに">終わりに</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="compact-cas-compact-cameraandstorage">Compact-CAS (Compact-CameraAndStorage)</h2>
+<p>日本では、監視カメラシステムの設置は非常に高い</p>
+<p>高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う</p>
+<p>さらに、昨今の人工知能分野の発展で画像さえあれば何か面白いことができてしまうのでできることならデータをたくさん蓄えておきたい</p>
+<p>さて、日本の製品としての監視カメラシステムはどれくらい高いのか？</p>
+<p>初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある</p>
+<p>しかし、この大金の捻出はIoTの民主化で解決できる</p>
+<p>今日は <a href="https://github.com/okayu1230z/c-cas" target="_blank" rel="noopener noreffer">Compact-CAS</a> を紹介したい</p>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Compact-CAS (Compact-CameraAndStorage)<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e.g. SSD, HDD).</div>
+        </div>
+    </div>
+<p>こう書いてあるけど、簡単にいうと「Webカメラで動体検知して画像・動画をSSDに保存していく、ストレージ一体化の監視カメラ」のことである</p>
+<p>機能を見ていこう</p>
+<p>まずは Apache の list directory をそのまま用いているのだけど、日付ごとに directory が違うので、このままでも比較的ログは追いやすい</p>
+<p>それでは、既存比較したものを表で見てみよう</p>
+<p>○/△/x</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>マネジメントコンソール</th>
+<th>Column 2</th>
+<th>Scalability</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compact-CAS</td>
+<td>Cell A-1</td>
+<td>Cell A-2</td>
+<td>○</td>
+<td>○</td>
+</tr>
+<tr>
+<td>これ</td>
+<td>Cell B-1</td>
+<td>Cell B-2</td>
+<td>x</td>
+<td>△</td>
+</tr>
+<tr>
+<td>これ</td>
+<td>Cell B-1</td>
+<td>Cell B-2</td>
+<td>x</td>
+<td>△</td>
+</tr>
+<tr>
+<td>これ</td>
+<td>Cell B-1</td>
+<td>Cell B-2</td>
+<td>x</td>
+<td>△</td>
+</tr>
+<tr>
+<td>これ</td>
+<td>Cell B-1</td>
+<td>Cell B-2</td>
+<td>x</td>
+<td>△</td>
+</tr>
+</tbody>
+</table>
+<p>バイアスもかかってるだろうし、抜け漏れ勘弁</p>
+<p>カメラ 1台、SSD 1台で Compact-CAS 運用する方法は上記のドキュメントの方にまとめてあるので、ここでは複数台同時に setting する方法を紹介する</p>
+<h2 id="pssh-を使った-rpi-の複数台セッティング">pssh を使った RPi の複数台セッティング</h2>
+<p>pssh は SSH の並列実行できるコマンドで、Ubuntu や Mac、Windows で配布されている</p>
+<p>これを使って4台のRPiに同時にCompact-CASをインストールしていこうと思ふ</p>
+<p>PRi の setup は各自に任せる</p>
+<p>自分は Ubuntu 20.04 LTS をインストールした microSD を RPi4 に差して、ネットワークを固定IPを振って ssh鍵認証、SSHポート変更、まで set up した状態からスタートする</p>
+<p>Mac で brew が使えるなら以下で入る</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ brew install pssh
+</code></pre></td></tr></table>
+</div>
+</div><p>psshのファイルができたら、なんでも良いのでファイルを作ってそこにsshしたいホストを列挙していく</p>
+<p>私は以下のファイルをccas.txtという名前で保存した</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ccas1
+ccas2
+ccas3
+ccas4
+</code></pre></td></tr></table>
+</div>
+</div><p>.ssh/configはこんな感じで用意した</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ cat .ssh/config
+Host ccas1
+  HostName 172.16.0.40
+  User okmt
+  Port 10022
+  IdentityFile ~/.ssh/id_rsa_okmt
+Host ccas2
+  HostName 172.16.0.41
+  User okmt
+  Port 10022
+  IdentityFile ~/.ssh/id_rsa_okmt
+Host ccas3
+  HostName 172.16.0.42
+  User okmt
+  Port 10022
+  IdentityFile ~/.ssh/id_rsa_okmt
+Host ccas4
+  HostName 172.16.0.43
+  User okmt
+  Port 10022
+  IdentityFile ~/.ssh/id_rsa_okmt
+</code></pre></td></tr></table>
+</div>
+</div><p>これで実行したいコマンドとccas.txtをpsshに渡すと、各RPiで並列的にコマンドが実行できる</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ pssh -h ccas -i &#34;ls&#34;        
+[1] 23:18:56 [SUCCESS] ccas1
+bv_ror_on_docker
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Public
+Templates
+Videos
+[2] 23:18:56 [SUCCESS] ccas3
+[3] 23:18:56 [SUCCESS] ccas2
+[4] 23:18:56 [SUCCESS] ccas4
+</code></pre></td></tr></table>
+</div>
+</div><p>以上の結果、txtファイルの順番通りじゃないのは、コマンドの実行結果が返却された順番に出力されているからなのかなと思ってます。</p>
+<p>余談だけど ccas1 は Ubuntu Desktop なので default で Desktop や Downloads が生成されているけど、ccas2-4 は Ubuntu Server なので初期状態の home directory には何もない</p>
+<p>sudo は以下のコマンドのようにして、適当なファイルにパスワードを書いてそれを読み込ませる</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ cat passwd | pssh -h ccas -x &#39;-tt&#39; --inline-stdout -I &#34;sudo whoami&#34;
+[1] 23:41:01 [SUCCESS] manager1
+[sudo] password for okmt: 
+root
+[2] 23:41:03 [SUCCESS] ccas3
+[sudo] password for okmt: 
+root
+[3] 23:41:03 [SUCCESS] ccas2
+[sudo] password for okmt: 
+root
+</code></pre></td></tr></table>
+</div>
+</div><p>まぁこれでなんとか無理やりsudoを使ったけど、.*_history に入るよりはマシな運用だと思って見逃されたい</p>
+<p>用済みになったパスワード直書きファイルは必ず削除してください</p>
+<p>てことでgithubの手順通りCompact-CASをインストールする</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ cat passwd | pssh -h ccas -x &#39;-tt&#39; --inline-stdout -I &#34;sudo apt install -y v4l-utils&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="usbtemper">USBTemper</h2>
+<p><a href="https://www.amazon.co.jp/dp/B004FI1570" target="_blank" rel="noopener noreffer">USBTemper</a>、一見ものすごく怪しい製品だけど、SwitchBotに比べて1,000yen安い</p>
+<h3 id="ubuntu-2004-on-rpi-に-hcitool-をインストールする">Ubuntu 20.04 on RPi に hcitool をインストールする</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt-get update
+$ sudo apt-get install libdbus-1-dev libdbus-glib-1-dev libglib2.0-dev libical-dev libr    eadline-dev libudev-dev libusb-dev make
+$ <span class="nb">cd</span> /usr/src/
+$ sudo wget https://www.kernel.org/pub/linux/bluetooth/bluez-5.34.tar.xz
+$ sudo xz -d bluez-5.34.tar.xz
+$ sudo tar xvf bluez-5.34.tar
+$ <span class="nb">cd</span> bluez-5.34
+$ sudo ./configure --disable-systemd
+$ sudo make
+$ sudo make install
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="終わりに">終わりに</h2>
+<p>今回の自立型の監視カメラシステムの実装には難解なプログラミングも必要もない</p>
+<p>このような基本的なIoT構築は個人レベルで簡単に行うことができる</p>
+<p>ところで実家の畑に複数種類の動物が出現して野菜を荒らしているらしい&hellip;</p>
+<p>これを踏まえてCompact-CASをベースに暗視できるようなセンサを用いて野外用監視カメラシステムを組んでみることを考えている</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-09-01</span>
+            </div>
+            <div class="post-info-license"><span>MIT</span></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/ccas/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://www.okmt.dev/ccas/" data-title="Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage" data-via="okmtok" data-hashtags="Certification,LPIC,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://www.okmt.dev/ccas/" data-hashtag="Certification"><i class="fab fa-facebook-square fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/certification/">Certification</a>,&nbsp;<a href="/tags/lpic/">LPIC</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lpic1/" class="prev" rel="prev" title="LPIC level 1を取得した"><i class="fas fa-angle-left fa-fw"></i>LPIC level 1を取得した</a>
+            <a href="/docker/" class="next" rel="next" title="Docker を学んでみよう（本読み感想含む）">Docker を学んでみよう（本読み感想含む）<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://www.okmt.dev/portfolio/" target="_blank">okmt</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
