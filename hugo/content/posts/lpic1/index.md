@@ -1,9 +1,9 @@
 ---
 title: "LPIC level 1を取得した"
 subtitle: "Challenging LPIC level 1"
-date: 2021-08-29T00:00:00+09:00
-lastmod: 2021-08-29T00:00:00+09:00
-publishDate: 2021-08-29T00:00:00+09:00
+date: 2021-09-01T00:00:00+09:00
+lastmod: 2021-09-01T00:00:00+09:00
+publishDate: 2021-09-01T00:00:00+09:00
 #author: "okmt"
 #authorLink: "okmtLink"
 #description: "okmtDesc"
