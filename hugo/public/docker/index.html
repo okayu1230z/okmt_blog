@@ -5,70 +5,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Docker を学んでみよう（本読み感想含む） - okmt&#39;s blogs</title><meta name="Description" content=""><meta property="og:title" content="Docker を学んでみよう（本読み感想含む）" />
-<meta property="og:description" content="Docker と勉強方法 Docker とはなんぞや？
-Docker  公式のドキュメント   開発中のソフトウェアを他のエンジニアと共有したり、
-プロトタイプをサクッと試してもらいたい時などはもはや必須といえるんじゃなかろうか。
-無料だし（なんか最近有料化の流れもあるけど）
-この記事では、Docker の使い方と（ちょっと）仕組みと（ちょっと）周辺技術をまとめてみたのでそれらを紹介する
-書籍に書いてある内容とこの記事の中身は違うので気になる人は実際に読んでみてね
-参考書の紹介 docker docs
-公式の文章は重要なのですが、今回は言葉の定義を確認したいときなどを中心に辞書的に使いました。
-さわって学ぶクラウドインフラ docker基礎からのコンテナ構築 | 日経BP
-タイトルは&quot;クラウド&quot;に限定されているように見えるが中身はタイトルほど&quot;クラウド&quot;に限定していないように見える
-そもそも Docker は&quot;クラウド&quot;のためだけのインフラでないことは明確ですが、 それだけにこのタイトルの場合はもう少しクラウド取り扱っていても良かったのかなぁと
-内容的に少しだけ引っかかるところがあったのでそれは本記事の最後にまとめておくわね。
-図表は分かりやすかった！
-Docker | O&rsquo;REILLY
-難易度としては上の本よりも数段上にあり、Docker や Docker の構成要素を少し深くまで学習することができた
-Ansible や Trition などの Docker が関連するソフトウェアも幅広く紹介していて、知識の幅も広がる
-一方でポイントを絞って学ぶという観点では範囲が広すぎるので、 「俺は使うのに必要最小限の知識だけあればいいぜ！」という人には向いていないかも知れない本
-幅広く、でも重要なところは取りこぼしたくなので、上の本と組み合わせて学習することに
-結果、1ヶ月もせずあんなに知らんかった Docker の理解が確実に進んだのでこの学習方法は合う人には合うかも
-Docker まとめ Docker を使うと、host OS との resource 共有、Container の Portability、軽量なので実動環境そのままの分散システムを emulate できたりと、メリットたくさんあるよ
-Docker は scale-out が容易に行えるので micro service も use case として挙げられるよ" />
+        <title>Docker の基礎と学び方 - okmt&#39;s blogs</title><meta name="Description" content=""><meta property="og:title" content="Docker の基礎と学び方" />
+<meta property="og:description" content="Dockerをある程度学んだので利用するメリット、最低限知っておきたい使い方と参考書物の感想をまとめてみたのでそれらを紹介する
+個人的にDockerが結構好きというのもあるが、初めて使ったときその手軽さにかなり驚いたのを覚えていて、本記事が布教に役立てばと思っている。
+Dockerとは？ Docker とはコンテナ化仮想化アプリケーション実行環境プラットフォームである。
+公式サイトから抜粋すると、Dockerは下のように説明されている。
+Docker  Docker takes away repetitive, mundane configuration tasks and is used throughout the development lifecycle for fast, easy and portable application development - desktop and cloud. Docker’s comprehensive end to end platform includes UIs, CLIs, APIs and security that are engineered to work together across the entire application delivery lifecycle.    高速で簡単でポータブル（fast, easy and portable）なアプリケーション開発環境として、開発ライフサイクル(development lifecycle)全体で利用できるよ 反復的な構築作業(mundane configuration tasks)から解放させてくれるよ DockerというプラットフォームはUI, CLI, API, セキュリティなどあらゆるデリバリーライフサイクルを包括的に提供できるよ  欲張りすぎな説明に見えるかもしれないが、言い過ぎではない。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://www.okmt.dev/docker/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-29T00:00:00+09:00" />
-<meta property="article:modified_time" content="2021-09-01T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-11-01T00:00:00+09:00" />
+<meta property="article:modified_time" content="2021-11-01T00:00:00+09:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Docker を学んでみよう（本読み感想含む）"/>
-<meta name="twitter:description" content="Docker と勉強方法 Docker とはなんぞや？
-Docker  公式のドキュメント   開発中のソフトウェアを他のエンジニアと共有したり、
-プロトタイプをサクッと試してもらいたい時などはもはや必須といえるんじゃなかろうか。
-無料だし（なんか最近有料化の流れもあるけど）
-この記事では、Docker の使い方と（ちょっと）仕組みと（ちょっと）周辺技術をまとめてみたのでそれらを紹介する
-書籍に書いてある内容とこの記事の中身は違うので気になる人は実際に読んでみてね
-参考書の紹介 docker docs
-公式の文章は重要なのですが、今回は言葉の定義を確認したいときなどを中心に辞書的に使いました。
-さわって学ぶクラウドインフラ docker基礎からのコンテナ構築 | 日経BP
-タイトルは&quot;クラウド&quot;に限定されているように見えるが中身はタイトルほど&quot;クラウド&quot;に限定していないように見える
-そもそも Docker は&quot;クラウド&quot;のためだけのインフラでないことは明確ですが、 それだけにこのタイトルの場合はもう少しクラウド取り扱っていても良かったのかなぁと
-内容的に少しだけ引っかかるところがあったのでそれは本記事の最後にまとめておくわね。
-図表は分かりやすかった！
-Docker | O&rsquo;REILLY
-難易度としては上の本よりも数段上にあり、Docker や Docker の構成要素を少し深くまで学習することができた
-Ansible や Trition などの Docker が関連するソフトウェアも幅広く紹介していて、知識の幅も広がる
-一方でポイントを絞って学ぶという観点では範囲が広すぎるので、 「俺は使うのに必要最小限の知識だけあればいいぜ！」という人には向いていないかも知れない本
-幅広く、でも重要なところは取りこぼしたくなので、上の本と組み合わせて学習することに
-結果、1ヶ月もせずあんなに知らんかった Docker の理解が確実に進んだのでこの学習方法は合う人には合うかも
-Docker まとめ Docker を使うと、host OS との resource 共有、Container の Portability、軽量なので実動環境そのままの分散システムを emulate できたりと、メリットたくさんあるよ
-Docker は scale-out が容易に行えるので micro service も use case として挙げられるよ"/>
+<meta name="twitter:title" content="Docker の基礎と学び方"/>
+<meta name="twitter:description" content="Dockerをある程度学んだので利用するメリット、最低限知っておきたい使い方と参考書物の感想をまとめてみたのでそれらを紹介する
+個人的にDockerが結構好きというのもあるが、初めて使ったときその手軽さにかなり驚いたのを覚えていて、本記事が布教に役立てばと思っている。
+Dockerとは？ Docker とはコンテナ化仮想化アプリケーション実行環境プラットフォームである。
+公式サイトから抜粋すると、Dockerは下のように説明されている。
+Docker  Docker takes away repetitive, mundane configuration tasks and is used throughout the development lifecycle for fast, easy and portable application development - desktop and cloud. Docker’s comprehensive end to end platform includes UIs, CLIs, APIs and security that are engineered to work together across the entire application delivery lifecycle.    高速で簡単でポータブル（fast, easy and portable）なアプリケーション開発環境として、開発ライフサイクル(development lifecycle)全体で利用できるよ 反復的な構築作業(mundane configuration tasks)から解放させてくれるよ DockerというプラットフォームはUI, CLI, API, セキュリティなどあらゆるデリバリーライフサイクルを包括的に提供できるよ  欲張りすぎな説明に見えるかもしれないが、言い過ぎではない。"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.okmt.dev/docker/" /><link rel="prev" href="http://www.okmt.dev/ccas/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://www.okmt.dev/docker/" /><link rel="prev" href="http://www.okmt.dev/ccas/" /><link rel="next" href="http://www.okmt.dev/iotcertificate/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Docker を学んでみよう（本読み感想含む）",
+        "headline": "Docker の基礎と学び方",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/www.okmt.dev\/docker\/"
-        },"genre": "posts","keywords": "Certification, LPIC, Linux","wordcount":  320 ,
-        "url": "http:\/\/www.okmt.dev\/docker\/","datePublished": "2021-08-29T00:00:00+09:00","dateModified": "2021-09-01T00:00:00+09:00","publisher": {
+        },"genre": "posts","keywords": "Docker, CI\/CD, Infrastructure as Code, DevOps, Linux","wordcount":  521 ,
+        "url": "http:\/\/www.okmt.dev\/docker\/","datePublished": "2021-11-01T00:00:00+09:00","dateModified": "2021-11-01T00:00:00+09:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -142,10 +110,10 @@ Docker は scale-out が容易に行えるので micro service も use case と�
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Docker を学んでみよう（本読み感想含む）</h1><h2 class="single-subtitle">Let&#39;s learn Docker (reading books impression)</h2><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Docker の基礎と学び方</h1><h2 class="single-subtitle">Let&#39;s learn Docker</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.okmt.dev/portfolio/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>okmt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/diary/"><i class="far fa-folder fa-fw"></i>Diary</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-29">2021-08-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;320 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-01">2021-11-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;521 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -160,65 +128,114 @@ Docker は scale-out が容易に行えるので micro service も use case と�
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#docker-と勉強方法">Docker と勉強方法</a>
+    <li><a href="#dockerとは">Dockerとは？</a>
       <ul>
-        <li><a href="#参考書の紹介">参考書の紹介</a></li>
-      </ul>
-    </li>
-    <li><a href="#docker-まとめ">Docker まとめ</a>
-      <ul>
-        <li><a href="#dockerfile-からイメージを作成">Dockerfile からイメージを作成</a>
+        <li><a href="#よく取り上げられるメリット">よく取り上げられるメリット</a>
           <ul>
-            <li><a href="#docker-build">docker build</a></li>
+            <li>
+              <ul>
+                <li><a href="#ポイント1-iacinfrastructure-as-code">ポイント1: IaC(Infrastructure as Code)</a></li>
+                <li><a href="#ポイント2-軽量">ポイント2: 軽量</a></li>
+                <li><a href="#ポイント3-コスト">ポイント3: コスト</a></li>
+                <li><a href="#ポイント4-portable">ポイント4: portable</a></li>
+                <li><a href="#ポイント5-devops">ポイント5: DevOps</a></li>
+                <li><a href="#個人的な推しポイント-orchestration-toolの存在">個人的な推しポイント: Orchestration toolの存在</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
-        <li><a href="#docker-image-command">docker image command</a></li>
-        <li><a href="#docker-container-command">docker container command</a></li>
       </ul>
     </li>
-    <li><a href="#総括">総括</a>
+    <li><a href="#これだけ覚えておきたいdockerの使い方">これだけ覚えておきたいDockerの使い方</a>
       <ul>
-        <li><a href="#さわって学ぶクラウドインフラkindle版の気になったところ">さわって学ぶクラウドインフラ（Kindle版）の気になったところ</a></li>
+        <li><a href="#dockerfile">Dockerfile</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#multi-stage-build">Multi-Stage build</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#よく使うdockerコマンドまとめ">よく使うDockerコマンドまとめ</a></li>
+        <li><a href="#docker-composeについて">Docker Composeについて</a></li>
       </ul>
     </li>
+    <li><a href="#参考書の紹介">参考書の紹介</a></li>
+    <li><a href="#総括">総括</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="docker-と勉強方法">Docker と勉強方法</h2>
-<p>Docker とはなんぞや？</p>
+            </div><div class="content" id="content"><p>Dockerをある程度学んだので利用するメリット、最低限知っておきたい使い方と参考書物の感想をまとめてみたのでそれらを紹介する</p>
+<p>個人的にDockerが結構好きというのもあるが、初めて使ったときその手軽さにかなり驚いたのを覚えていて、本記事が布教に役立てばと思っている。</p>
+<br>
+<h2 id="dockerとは">Dockerとは？</h2>
+<p>Docker とはコンテナ化仮想化アプリケーション実行環境プラットフォームである。</p>
+<p><a href="https://www.docker.com/" target="_blank" rel="noopener noreffer">公式サイト</a>から抜粋すると、Dockerは下のように説明されている。</p>
 <div class="details admonition tip">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Docker<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">公式のドキュメント</div>
+            <div class="admonition-content">Docker takes away repetitive, mundane configuration tasks and is used throughout the development lifecycle for fast, easy and portable application development - desktop and cloud. Docker’s comprehensive end to end platform includes UIs, CLIs, APIs and security that are engineered to work together across the entire application delivery lifecycle.</div>
         </div>
     </div>
+<ul>
+<li>高速で簡単でポータブル（fast, easy and portable）なアプリケーション開発環境として、開発ライフサイクル(development lifecycle)全体で利用できるよ</li>
+<li>反復的な構築作業(mundane configuration tasks)から解放させてくれるよ</li>
+<li>DockerというプラットフォームはUI, CLI, API, セキュリティなどあらゆるデリバリーライフサイクルを包括的に提供できるよ</li>
+</ul>
+<p>欲張りすぎな説明に見えるかもしれないが、言い過ぎではない。</p>
+<h3 id="よく取り上げられるメリット">よく取り上げられるメリット</h3>
+<ul>
+<li><strong>Infrastructure as Code</strong>: インフラをコード化することで、その冪等性を利用してコピーやスケールが用意になるなどのメリットがある</li>
+<li><strong>軽量</strong>: DockerはVMに比べるとサイズ的に軽量で、実行時に必要なシステムリソースも少ない</li>
+<li><strong>コスト</strong>: IaCにより環境構築などのイニシャルコスト、冪等性によりランニングコストを抑えることができる。</li>
+<li><strong>ポータブル</strong>: アプリケーション実行環境を配布しやすい。配布に特化したDocker Hubというネットワークシステムもある。</li>
+<li><strong>DevOps</strong>: スクラップ&amp;ビルドも用意で、日々のリリースサイクルがスムーズになる</li>
+</ul>
+<p>以上の5つは完全に独立しておらず、関係しながらも互いに成立している</p>
+<h5 id="ポイント1-iacinfrastructure-as-code">ポイント1: IaC(Infrastructure as Code)</h5>
+<p>コスト・スピード・リスクの観点からメリットが語られることが多い</p>
+<ul>
+<li>コスト: 繰り返される手作業を排除して、エンジニアが他の作業に集中できる</li>
+<li>スピード: インフラを自動がすることで高速な実行が期待できる</li>
+<li>リスク: 人的ミスを排除することで信頼性が向上する</li>
+</ul>
+<p>IaCを活用しインフラを構成するツールの総称をCCA(Continuous Configuration Automation)と呼び、代表的なものにはAnsibleやChefなどがある</p>
+<h5 id="ポイント2-軽量">ポイント2: 軽量</h5>
+<p>VMに比べて実行に必要な必要なシステムリソースが少なく、実行環境を選ばない</p>
+<p><a href="https://hub.docker.com/_/alpine" target="_blank" rel="noopener noreffer">Alpine</a>や<a href="https://hub.docker.com/_/debian" target="_blank" rel="noopener noreffer">Debian Slim</a>などの軽量イメージを元にImageを作成したりマルチステージビルドと組み合わせることでDockerの中でもさらに軽量で安全な実行環境を用意することができる</p>
+<h5 id="ポイント3-コスト">ポイント3: コスト</h5>
+<p>IoCの時に紹介したようにDevOps的な観点からもコストメリットがある</p>
+<p>また、開発環境をそれぞれで構築する必要がなく、Docker Engineが動いているOSであればすぐに環境を構築できるという点でも人的リソースを削除できると考えられる</p>
+<h5 id="ポイント4-portable">ポイント4: portable</h5>
 <p>開発中のソフトウェアを他のエンジニアと共有したり、</p>
-<p>プロトタイプをサクッと試してもらいたい時などはもはや必須といえるんじゃなかろうか。</p>
-<p>無料だし（なんか最近有料化の流れもあるけど）</p>
-<p>この記事では、Docker の使い方と（ちょっと）仕組みと（ちょっと）周辺技術をまとめてみたのでそれらを紹介する</p>
-<p>書籍に書いてある内容とこの記事の中身は違うので気になる人は実際に読んでみてね</p>
-<h3 id="参考書の紹介">参考書の紹介</h3>
-<p><a href="https://docs.docker.com/" target="_blank" rel="noopener noreffer">docker docs</a></p>
-<p>公式の文章は重要なのですが、今回は言葉の定義を確認したいときなどを中心に辞書的に使いました。</p>
-<p><a href="https://www.amazon.co.jp/gp/product/B089VZXX63" target="_blank" rel="noopener noreffer">さわって学ぶクラウドインフラ docker基礎からのコンテナ構築 | 日経BP</a></p>
-<p>タイトルは&quot;クラウド&quot;に限定されているように見えるが中身はタイトルほど&quot;クラウド&quot;に限定していないように見える</p>
-<p>そもそも Docker は&quot;クラウド&quot;のためだけのインフラでないことは明確ですが、
-それだけにこのタイトルの場合はもう少しクラウド取り扱っていても良かったのかなぁと</p>
-<p>内容的に少しだけ引っかかるところがあったのでそれは本記事の最後にまとめておくわね。</p>
-<p>図表は分かりやすかった！</p>
-<p><a href="https://www.amazon.co.jp/gp/product" target="_blank" rel="noopener noreffer">Docker | O&rsquo;REILLY</a></p>
-<p>難易度としては上の本よりも数段上にあり、Docker や Docker の構成要素を少し深くまで学習することができた</p>
-<p>Ansible や Trition などの Docker が関連するソフトウェアも幅広く紹介していて、知識の幅も広がる</p>
-<p>一方でポイントを絞って学ぶという観点では範囲が広すぎるので、
-「俺は使うのに必要最小限の知識だけあればいいぜ！」という人には向いていないかも知れない本</p>
-<p>幅広く、でも重要なところは取りこぼしたくなので、上の本と組み合わせて学習することに</p>
-<p>結果、1ヶ月もせずあんなに知らんかった Docker の理解が確実に進んだのでこの学習方法は合う人には合うかも</p>
-<h2 id="docker-まとめ">Docker まとめ</h2>
-<p>Docker を使うと、host OS との resource 共有、Container の Portability、軽量なので実動環境そのままの分散システムを emulate できたりと、メリットたくさんあるよ</p>
-<p>Docker は scale-out が容易に行えるので micro service も use case として挙げられるよ</p>
-<h3 id="dockerfile-からイメージを作成">Dockerfile からイメージを作成</h3>
-<p>Dockerfileに記述できる命令は以下のようになっている</p>
+<p>ソフトウェアを面倒な環境構築をさけてサクッと試してもらいたい時などはもはや必須の技術といえるんじゃなかろうか</p>
+<p>無料だし（なんか最近Docker Desktopの制約付き有料化の流れもあるけど）</p>
+<p>自分は仕事仲間とアプリケーションを共有したり、試したいOSSがあったりすると必ずと言っていいほどDockerを利用している</p>
+<p>そのportableな性質を利用してマイクロサービスを開発するときにも利用される</p>
+<h5 id="ポイント5-devops">ポイント5: DevOps</h5>
+<p>DevOpsはソフトウェア開発と運用が密接に連携することにより、柔軟かつスピーディーにシステムを提供するための考え方でCI/CDというプラクティスが有名</p>
+<ul>
+<li>CI(Continuous Integration): ソースコードを変更するたびにビルドと単体テストを実行することで不整合を早期に発見し、開発者の定常作業の効率化を見込むことができる</li>
+<li>CD(Continuous Delivery): CIを完了したアプリケーションを定期的にテスト環境へ配置し、常に動作可能な最新状態のアプリケーションを維持するプロセスを自動化すること。</li>
+</ul>
+<p>本番環境にリリースするプロセスも自動化するCD(Continuous Deploy)という考え方もある</p>
+<p>DockerはCI/CDとの相性がよく、Jenkinsなどのビルドパイプラインツールと組み合わせて使われる</p>
+<h5 id="個人的な推しポイント-orchestration-toolの存在">個人的な推しポイント: Orchestration toolの存在</h5>
+<p>オーケストレーションツールのKubernetes (a.k.a k8s)など、コンテナ化仮想化アプリケーションの管理を行うツールの存在がある</p>
+<p>k8sを簡単に説明すると複数のDocker containerを管理する仕組みを提供しているソフトウェアである。</p>
+<p>Dockerで定義したアプリケーションを簡単にスケール・管理することができる。</p>
+<p>管理しているContainerがシャットダウンしても自動で定義された状態を保とうとする自己回復機能などがある。</p>
+<br>
+<h2 id="これだけ覚えておきたいdockerの使い方">これだけ覚えておきたいDockerの使い方</h2>
+<ul>
+<li><strong>Docker Image</strong>: Docker Containerのベースとなるアーカイブパッケージのこと。<a href="https://hub.docker.com/" target="_blank" rel="noopener noreffer">Docker Hub</a>などで配布されている</li>
+<li><strong>Docker Container</strong>: Docker Imageを元に作成するアプリケーション実行環境。Dockerfileを用いてDocker Imageを拡張できる</li>
+</ul>
+<h3 id="dockerfile">Dockerfile</h3>
+<p>配布されているDocker ImageをベースにDockerfileに定義した内容で新しいDocker Imageのビルドを行える</p>
+<p>Dockerfileに記述できる命令の一部を紹介</p>
 <table>
 <thead>
 <tr>
@@ -229,7 +246,7 @@ Docker は scale-out が容易に行えるので micro service も use case と�
 <tbody>
 <tr>
 <td>FROM</td>
-<td>DOckerfile のベースイメージを設定</td>
+<td>Dockerfile のベースイメージを設定</td>
 </tr>
 <tr>
 <td>LABEL</td>
@@ -269,7 +286,7 @@ Docker は scale-out が容易に行えるので micro service も use case と�
 </tr>
 </tbody>
 </table>
-<p>引数の動きを確認する</p>
+<p>Dockerfileは以下のように定義する</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -280,15 +297,16 @@ Docker は scale-out が容易に行えるので micro service も use case と�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="k">FROM</span><span class="s"> debian</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">RUN</span> apt update <span class="o">&amp;&amp;</span> apt install -y cowsay fortune<span class="err">
-</span><span class="err"></span><span class="k">COPY</span> entrypoint.sh /<span class="err">
-</span><span class="err">
-</span><span class="err"></span>ENTORYPOINT <span class="o">[</span><span class="s2">&#34;/entrypoint.sh&#34;</span><span class="o">]</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">FROM debian
+
+RUN apt update &amp;&amp; apt install -y cowsay fortune
+COPY entrypoint.sh /
+
+ENTORYPOINT [&#34;/entrypoint.sh&#34;]
+</code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div class="chroma">
+</div><p>entrypoint.shという名前のbashを以下のように定義する</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -306,54 +324,188 @@ Docker は scale-out が容易に行えるので micro service も use case と�
 <span class="k">fi</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="docker-build">docker build</h4>
-<p><code>docker build -t test/cowsay-docker file</code></p>
-<h3 id="docker-image-command">docker image command</h3>
-<p><code>$ docker image ls</code> : 保存されているイメージを全て表示</p>
-<p><code>$ docker image history okmt_nginx:lastet</code> : okmt_nginxイメージのレイヤを表示する</p>
-<p><code>docker image rmi -f $(docker image ls -a -f &quot;dangling=true&quot; -q)</code> : <none>:<none>となっているどうしようもないイメージを削除する</p>
-<p><code>$ docker image prune</code> : 上と同じ効果</p>
-<h3 id="docker-container-command">docker container command</h3>
-<p><code>$ docker container run -it debian /bin/bash</code> : debianコンテナを起動し、bashでログイン（-it でインタラクティブな端末で接続）</p>
-<p><code>$ docker container run --name okmt-httpd -p 8080:80 -v &quot;$PWD:/usr/local/apache2/htdocs/ httpd:2.4&quot;</code> : current directory を web server の公開 directory に mount して起動する（&ndash;name でコンテナ名前を指定して起動、-v でローカルディレクトリのマウント、-p でポートの指定、ちなみに、-d でバックグラウンドで実行）</p>
-<p><code>$ docker container ls</code> : コンテナ一覧を表示</p>
-<p><code>$ docker container ls -aq -f status=exited</code> : 停止したコンテナIDを全て表示</p>
-<p><code>$ docker continaer rm -v $(docker container ls -aq -f status=exited)</code> : 停止したコンテナを全て削除（上記コマンドを利用したいなら alias 貼っとくのが良いかも？自分は docker-rm-exited で登録してる）</p>
-<p><code>$ docker container inspect okmt-httpd</code> : コンテナの詳しい情報（引数、状況、ネットワーク構成）を表示</p>
-<p><code>$ docker container logs okmt-httpd</code> : コンテナ内で起きたことのリストを表示</p>
-<p><code>$ docker container diff okmt-httpd</code> : コンテナ内で変更されたファイルのリストを表示</p>
-<p><code>$ docker container logs okmt-httpd</code> : コンテナのログを表示（-f で表示し続ける）</p>
-<h2 id="総括">総括</h2>
-<p>勉強よりもまとめることの方がしんどかった！</p>
-<p>で、これをちゃんと学んでみて確信に変わったのが Docker はやはりインフラエンジニアのやることでなく、</p>
-<p>アプリケーションエンジニアとしての素養として身につけておいて良いってこと。</p>
-<h3 id="さわって学ぶクラウドインフラkindle版の気になったところ">さわって学ぶクラウドインフラ（Kindle版）の気になったところ</h3>
-<p>いずれも細かいことであります！</p>
-<div class="details admonition tip">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>気になる点 1<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>docker container ls と docker ps がある -&gt; そうだね</p>
-<p>この本では短いコマンドを使いたいので docker ps を使う -&gt; まぁ分かる</p>
-<p>docker image ls を使う -&gt; その流れだと使うのは docker images では？</p>
+</div><p>ではターミナルで上記ファイルを配置したディレクトリまで移動して以下を実行してビルドする</p>
+<p><code>$ docker build -t cowsay .</code></p>
+<p>作業ディレクトリ配下のDockerfileののビルドが行われ、ローカルにcowsayという名前のDocker Imageが保存される</p>
+<p>以下のコマンドでローカルに保存されたイメージは確認できる</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker images
+REPOSITORY                         TAG       IMAGE ID       CREATED              SIZE
+cowsay                             latest    a1ab28168777   About a minute ago   191MB
+</code></pre></td></tr></table>
 </div>
-        </div>
-    </div>
-<div class="details admonition tip">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>気になる点 2<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">これは誤植かと思いますが、図表4-6の「-v &ldquo;SPWD&rdquo;:/usr/local/apache2/htdocs」は
-「-v &ldquo;$PWD&rdquo;:/usr/local/apache2/htdocs」かも知れません。</div>
-        </div>
-    </div>
+</div><p>そしてDocker Containerの立ち上げpenDialogは以下のように実行する</p>
+<p><code>$ docker run cowsay</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker run cowsay
+ ________________
+&lt; Chess tonight. &gt;
+ ----------------
+        <span class="se">\ </span>  ^__^
+         <span class="se">\ </span> <span class="o">(</span>oo<span class="o">)</span><span class="se">\_</span>______
+            <span class="o">(</span>__<span class="o">)</span><span class="se">\ </span>      <span class="o">)</span><span class="se">\/\
+</span><span class="se"></span>                <span class="o">||</span>----w <span class="p">|</span>
+                <span class="o">||</span>     <span class="o">||</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>引数を変えながら動きを見てみる</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ docker run cowsay 楽しいDocker
+ __
+&lt; 楽しいDocker  &gt;
+ --
+        <span class="se">\ </span>  ^__^
+         <span class="se">\ </span> <span class="o">(</span>oo<span class="o">)</span><span class="se">\_</span>______
+            <span class="o">(</span>__<span class="o">)</span><span class="se">\ </span>      <span class="o">)</span><span class="se">\/\
+</span><span class="se"></span>                <span class="o">||</span>----w <span class="p">|</span>
+                <span class="o">||</span>     <span class="o">||</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ここでは牛のお話内容が変わるだけの分岐をbashで実行しているが、引数をtestとするとテストを実行したりするようにするような利用ケースが考えられる</p>
+<h5 id="multi-stage-build">Multi-Stage build</h5>
+<p>Dockerの公式ドキュメントにGolangの環境構築例が取り上げられていたので、そのまま持ってくる</p>
+<p>以下のようなDockerfileを用意する</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">FROM golang:1.16 AS builder
+WORKDIR /go/src/github.com/alexellis/href-counter/
+RUN go get -d -v golang.org/x/net/html
+COPY app.go    ./
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /go/src/github.com/alexellis/href-counter/app ./
+CMD [&#34;./app&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><p>ビルド・実行を同じDockerfileで行うように設定することをマルチステージビルドという</p>
+<p>「FROM golang」のイメージでビルドして、「FROM alpine」ではappを実行している</p>
+<p>特徴的なのは10行目のCOPYでbuilderという名前をつけたImageでの成果物を2つ目のImageにCOPYするのを行なっている</p>
+<h3 id="よく使うdockerコマンドまとめ">よく使うDockerコマンドまとめ</h3>
+<p>debianコンテナを起動し、bashでログイン（-it でインタラクティブな端末で接続）</p>
+<p><code>$ docker container run -it debian /bin/bash</code></p>
+<p>current directoryをweb server の公開directoryにmountして起動する（&ndash;name でコンテナ名前を指定して起動、-v でローカルディレクトリのマウント、-p でポートの指定、ちなみに、-d でバックグラウンドで実行）</p>
+<p><code>$ docker container run --name okmt-httpd -p 8080:80 -v &quot;$PWD:/usr/local/apache2/htdocs/ httpd:2.4&quot;</code></p>
+<p>コンテナ一覧を表示（-a optionでexitedなcontainerも表示）</p>
+<p><code>$ docker container ls</code></p>
+<p>コンテナ削除</p>
+<p><code>$ docker container rm &lt;Container ID&gt;</code></p>
+<p>停止したコンテナIDを全て表示</p>
+<p><code>$ docker container ls -aq -f status=exited</code></p>
+<p>つまり以下のようにすると停止したコンテナを全て削除できる</p>
+<p><code>$ docker continaer rm -v $(docker container ls -aq -f status=exited)</code></p>
+<p>コンテナの詳しい情報（引数、状況、ネットワーク構成）を表示</p>
+<p><code>$ docker container inspect okmt-httpd</code></p>
+<p>コンテナ内で変更されたファイルのリストを表示</p>
+<p><code>$ docker container diff okmt-httpd</code></p>
+<p>コンテナのログを表示（-f で表示し続ける)</p>
+<p><code>$ docker container logs okmt-httpd</code></p>
+<h3 id="docker-composeについて">Docker Composeについて</h3>
+<p>Docker Composeは複数のコンテナを定義し実行するツールで、yamlファイルを入力とする。</p>
+<p>例えばNginxでホストにあるhtmlディレクトリにあるhtmlを配信するような設定のdocker-compose.ymlの記述は以下のように書ける</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">nginx</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">container</span><span class="p">:</span><span class="w"> </span><span class="l">nginx:latest</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;80:80&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">./html:/usr/share/nginx/html</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>このdocker-compose.ymlが存在するディレクトリにnginxで配信したい.htmlファイルを用意したhtmlというディレクトリを用意し、以下のコマンドを実行する</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ docker-compose up
+</code></pre></td></tr></table>
+</div>
+</div><p>記述方法は是非<a href="https://docs.docker.jp/compose/toc.html" target="_blank" rel="noopener noreffer">公式</a>などを確認してほしい</p>
+<p>ローカルのファイルをマウントしたりアプリケーションをカスタマイズ実行しようとするとdockerコマンドの引数が長くなってくると思うのでComposeを活用しよう</p>
+<br>
+<h2 id="参考書の紹介">参考書の紹介</h2>
+<p>書籍に書いてある内容とこの記事の中身はそこまで関係ないので以下の感想を読んでみて気になる人は実際に読んでみてね</p>
+<p><a href="https://www.amazon.co.jp/gp/product/B089VZXX63" target="_blank" rel="noopener noreffer">さわって学ぶクラウドインフラ docker基礎からのコンテナ構築 | 日経BP</a></p>
+<p>図表や説明などは分かりやすく、初学者にとってはとっつきやすい本だと感じた</p>
+<p>タイトルは&quot;クラウド&quot;に限定されているように見えるが中身はタイトルほど&quot;クラウド&quot;に限定していないように見える（そもそも Docker が&quot;クラウド&quot;のためだけのインフラでないことは明確ですが）</p>
+<p>Dockerに関する作業は全てAmazon EC2のUbuntu上で行うが、ローカルで行っても差分がない内容ではある</p>
+<p>本の後半ではk8sに関する内容がまとめられていて、とてもわかりやすい説明だったと思う</p>
+<p><a href="https://www.amazon.co.jp/gp/product" target="_blank" rel="noopener noreffer">Docker | O&rsquo;REILLY</a></p>
+<p>難易度としては上の本よりも数段上にあり、Docker や Docker の構成要素を少し深くまで学習することができた</p>
+<p>Ansible や Trition などの Docker が関連するソフトウェアも幅広く紹介していて、知識の幅も広がる</p>
+<p>一方でポイントを絞って学ぶという観点では範囲が広すぎるので、
+「俺はDockerを使うのに必要最小限の知識だけあればいいぜ！」という人には向いていない本かもしれない</p>
+<p>幅広く、でも周辺ソフトウェアも取りこぼしたくなかったので、上の本と組み合わせて学習することに</p>
+<h2 id="総括">総括</h2>
+<p>ちなみにGoogleは全ての開発をDockerでやっている</p>
+<p>Containerを利用できるクラウドサービスも増えてきているしやk8sもアツいし、</p>
+<p>今後、Dockerはアプリケーションエンジニアの必須な技術スタックになってくると思う</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-09-01</span>
+                <span>Updated on 2021-11-01</span>
             </div>
             <div class="post-info-license"><span>MIT</span></div>
         </div>
@@ -362,24 +514,25 @@ Docker は scale-out が容易に行えるので micro service も use case と�
                             <a class="link-to-markdown" href="/docker/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://www.okmt.dev/docker/" data-title="Docker を学んでみよう（本読み感想含む）" data-via="okmtok" data-hashtags="Certification,LPIC,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://www.okmt.dev/docker/" data-hashtag="Certification"><i class="fab fa-facebook-square fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://www.okmt.dev/docker/" data-title="Docker の基礎と学び方" data-via="okmtok" data-hashtags="Docker,CI/CD,Infrastructure as Code,DevOps,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://www.okmt.dev/docker/" data-hashtag="Docker"><i class="fab fa-facebook-square fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/certification/">Certification</a>,&nbsp;<a href="/tags/lpic/">LPIC</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/ci/cd/">CI/CD</a>,&nbsp;<a href="/tags/infrastructure-as-code/">Infrastructure as Code</a>,&nbsp;<a href="/tags/devops/">DevOps</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/ccas/" class="prev" rel="prev" title="Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage"><i class="fas fa-angle-left fa-fw"></i>Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage</a></div>
+    <div class="post-nav"><a href="/ccas/" class="prev" rel="prev" title="Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage"><i class="fas fa-angle-left fa-fw"></i>Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage</a>
+            <a href="/iotcertificate/" class="next" rel="next" title="IoTシステム技術検定 基礎・中級を取得した">IoTシステム技術検定 基礎・中級を取得した<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://www.okmt.dev/portfolio/" target="_blank">okmt</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://www.okmt.dev/portfolio/" target="_blank">okmt</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

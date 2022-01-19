@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>CI/CD - Tag - okmt&#39;s blogs</title>
+        <link>http://www.okmt.dev/tags/ci/cd/</link>
+        <description>CI/CD - Tag - okmt&#39;s blogs</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>yuki.okamoto@okmt.dev (okmt)</managingEditor>
+            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><atom:link href="http://www.okmt.dev/tags/ci/cd/" rel="self" type="application/rss+xml" /><item>
+    <title>Docker の基礎と学び方</title>
+    <link>http://www.okmt.dev/docker/</link>
+    <pubDate>Mon, 01 Nov 2021 00:00:00 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://www.okmt.dev/docker/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/docker/images/docker.png" referrerpolicy="no-referrer">
+            </div>Dockerをある程度学んだので利用するメリット、最低限知っておきたい使い方と参考書物の感想をまとめてみたのでそれらを紹介する
+個人的にDockerが結構好きというのもあるが、初めて使ったときその手軽さにかなり驚いたのを覚えていて、本記事が布教に役立てばと思っている。
+Dockerとは？ Docker とはコンテナ化仮想化アプリケーション実行環境プラットフォームである。
+公式サイトから抜粋すると、Dockerは下のように説明されている。
+Docker  Docker takes away repetitive, mundane configuration tasks and is used throughout the development lifecycle for fast, easy and portable application development - desktop and cloud. Docker’s comprehensive end to end platform includes UIs, CLIs, APIs and security that are engineered to work together across the entire application delivery lifecycle.    高速で簡単でポータブル（fast, easy and portable）なアプリケーション開発環境として、開発ライフサイクル(development lifecycle)全体で利用できるよ 反復的な構築作業(mundane configuration tasks)から解放させてくれるよ DockerというプラットフォームはUI, CLI, API, セキュリティなどあらゆるデリバリーライフサイクルを包括的に提供できるよ  欲張りすぎな説明に見えるかもしれないが、言い過ぎではない。]]></description>
+</item></channel>
+</rss>

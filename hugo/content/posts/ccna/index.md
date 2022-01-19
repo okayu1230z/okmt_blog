@@ -1,19 +1,19 @@
 ---
-title: "LPIC level 1を取得した"
-subtitle: "Challenging LPIC level 1"
-date: 2021-08-29T00:00:00+09:00
-lastmod: 2021-08-29T00:00:00+09:00
-publishDate: 2021-08-29T00:00:00+09:00
+title: "CCNAを取得した"
+subtitle: "Challenging CCNA"
+date: 2022-02-01T00:00:00+09:00
+lastmod: 2022-02-01T00:00:00+09:00
+publishDate: 2022-02-01T00:00:00+09:00
 #author: "okmt"
 #authorLink: "okmtLink"
 #description: "okmtDesc"
 license: "MIT"
-draft: true
+draft: false
 
 tags: [Certification, LPIC, Linux]
 categories: [Diary]
-featuredImage: "/lpic1/images/lpic1.png"
-featuredImagePreview: "/lpic1/images/lpic1.png"
+featuredImage: "/ccna/images/ccna.jpeg"
+featuredImagePreview: "/ccna/images/ccna.jpeg"
 
 hiddenFromHomePage: false
 hiddenFromSearch: false

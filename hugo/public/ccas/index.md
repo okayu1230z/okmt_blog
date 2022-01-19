@@ -3,19 +3,15 @@
 
 ## Compact-CAS (Compact-CameraAndStorage)
 
-日本では、監視カメラシステムの設置は非常に高い
-
 高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
 
-さらに、昨今の人工知能分野の発展で画像さえあれば何か面白いことができてしまうのでできることならデータをたくさん蓄えておきたい
+しかし、監視カメラの導入は初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
 
-さて、日本の製品としての監視カメラシステムはどれくらい高いのか？
+さらに、昨今の人工知能分野の発展でデータさえあれば何か面白いことができてしまうのでできたりするのでデータはたくさん蓄えておきたい
 
-初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
+この大金の捻出はIoTの民主化で解決できる
 
-しかし、この大金の捻出はIoTの民主化で解決できる
-
-今日は [Compact-CAS](https://github.com/okayu1230z/c-cas) を紹介したい
+今日は安価に手元で監視カメラシステムを構築できるOSSの [Compact-CAS](https://github.com/okayu1230z/c-cas) を紹介したい
 
 {{< admonition type=tip title="Compact-CAS (Compact-CameraAndStorage)" open=false >}}
 This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e.g. SSD, HDD).
@@ -23,27 +19,55 @@ This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage,
 
 こう書いてあるけど、簡単にいうと「Webカメラで動体検知して画像・動画をSSDに保存していく、ストレージ一体化の監視カメラ」のことである
 
-機能を見ていこう
+値段はSSDを含めた全てのパーツを集めたとしてもおよそ12,000円程度だろう
 
-まずは Apache の list directory をそのまま用いているのだけど、日付ごとに directory が違うので、このままでも比較的ログは追いやすい
+簡単に全体構成を見ていこう
 
-それでは、既存比較したものを表で見てみよう
+- カメラは[motion](https://motion-project.github.io/)を用いて動画の録画、動体感知、書き込みディレクトリなどを設定している
+- ログ表示にはApacheのlist directoryをそのまま用いているのだけど、日付ごとに違うdirectoryに保存しているので、このままでも比較的過去のログは追いやすい
+- Linuxのsystemdの設定で一定時間経過した映像の自動削除機能がある
 
-○/△/x 
+既存のサービスと比較したものを表を作ってみた（雑に調べたので間違った情報も含みますが申し訳ありません。嘘を嘘と見抜けない人はインターネットを〜以下略）
 
-  Product  | マネジメントコンソール | Column 2 | Scalability | Cost |
----------------|----------|---------|---------|---------|
- Compact-CAS | Cell A-1 | Cell A-2 | ○ | ○
- これ | Cell B-1 | Cell B-2 | x | △
- これ | Cell B-1 | Cell B-2 | x | △
- これ | Cell B-1 | Cell B-2 | x | △
- これ | Cell B-1 | Cell B-2 | x | △
+### 既存サービスとの比較
 
-バイアスもかかってるだろうし、抜け漏れ勘弁
+比較観点は以下の5つを勝手に定義させていただいた
+
+- Type: クラウド型SaaS/OSS/導入型（オンプレミスに製品やパッケージソフトウェアなどをメーカー主導で導入する方法）
+- Management Console: 管理を助けるGUIが提供されているか（管理が容易にできるなら○、データ確認機能だけなら△、それもないならx）
+- Scalability: システムを自由に拡張できるか（SaaSならAPIや自社ストレージへの自動データ保存機能などの拡張機能が充実しているか）
+- Storage: データ保存（無制限ダウンロードや自社ストレージへの自動保存は○、制限付きダウンロード機能はx）
+- Cost: 導入費用や月間使用料などの金銭的コスト
+
+○: 優れている/△: どちらでもない/x: 優れていない 
+
+  Product  | Type | Management Console | Scalability | Storage | Cost |
+---------------|----------|---------|---------|---------|---------|
+ [Compact-CAS](https://github.com/okayu1230z/c-cas) | OSS | △ | ○ | ○ | ○
+ [safie](https://safie.link/) | クラウド型SaaS | ○ | ○ | △ | △
+ [Eagle Eye](https://tocca.biz/product/product-814/) | クラウド型SaaS | ○ | △(※1) | △ | ?
+ [ELMO QBiC CLOUD](https://www.ricoh.co.jp/service/elmo-qbiccloud/) | クラウド型SaaS | ◯ | △ | ○ | △
+ [Panasonic BUSINESS](https://biz.panasonic.com/jp-ja/products-services/security_networkcamera/lineup) | 導入型 | △/x（※2） | △（※3） | ○ | x
+
+※1: カメラがマルチベンダーシステムで選択可能なため△
+※2: ローカルストレージに保存する設計/専用機器を導入
+※3: 自由に設計できる可能性を残すがメーカー特有のソフトウェアパッケージを利用する部分は融通が効かないと考えられるため
+
+Storageという観点はAI/Deep Learningなどで解析を行う際にデータ量が必要になるが、その際に全てのデータを保存できていることが望ましいのでデータ取得後分析したいなどの需要があれば重要である
+
+一方で制限付きダウンロードを提供しているSaaSでもタイムラプス動画が70時間や100時間などのみで解析可能という手法もあるのでよく考えて導入されたい
+
+safieは工事して導入/工事できないような場所に導入/来客をカウントしながらの監視/自宅への監視導入など様々なケースを想定したプロダクトを提供しており、小売・飲食などの小規模事例から工場のライン工に至るまでの大規模な導入ケースもある
+
+ELMO QBiC CLOUDは[サービス説明書](https://www.elmo.co.jp/info/support/guide/security/ELMO_QBiC_CLOUD_manual.pdf)が公開されているがかなり丁寧で印象が良い
+
+NTT Communicationsの[coomonita](https://www.ntt.com/business/solutions/enterprise-application-management/coomonita.html)とか便利そうだとサービスの中でSafie製品も取り扱ってるしどーゆー立場なのか分からないので表からは退けておいたやつが何個かある
+
+雑な表だが表を作成したのは2021年7月ごろで調べた資料のバイアスもかかってるだろうし、抜け漏れなども勘弁されたい
+
+### pssh を使った RPi の複数台セッティング
 
 カメラ 1台、SSD 1台で Compact-CAS 運用する方法は上記のドキュメントの方にまとめてあるので、ここでは複数台同時に setting する方法を紹介する
-
-## pssh を使った RPi の複数台セッティング
 
 pssh は SSH の並列実行できるコマンドで、Ubuntu や Mac、Windows で配布されている
 
@@ -101,7 +125,6 @@ Host ccas4
 ```
 $ pssh -h ccas -i "ls"        
 [1] 23:18:56 [SUCCESS] ccas1
-bv_ror_on_docker
 Desktop
 Documents
 Downloads
@@ -111,11 +134,14 @@ Public
 Templates
 Videos
 [2] 23:18:56 [SUCCESS] ccas3
+...
 [3] 23:18:56 [SUCCESS] ccas2
+...
 [4] 23:18:56 [SUCCESS] ccas4
+...
 ```
 
-以上の結果、txtファイルの順番通りじゃないのは、コマンドの実行結果が返却された順番に出力されているからなのかなと思ってます。
+以上の結果、txtファイルの順番通りじゃないのは、コマンドの実行結果が返却された順番に出力されているからなのかなと思う
 
 余談だけど ccas1 は Ubuntu Desktop なので default で Desktop や Downloads が生成されているけど、ccas2-4 は Ubuntu Server なので初期状態の home directory には何もない
 
@@ -144,12 +170,18 @@ root
 $ cat passwd | pssh -h ccas -x '-tt' --inline-stdout -I "sudo apt install -y v4l-utils"
 ```
 
-## USBTemper
+### USBTemper
+
+ここからは同じようにUSB接続できるセンサーから温度も測りたいという方に紹介したい
 
 [USBTemper](https://www.amazon.co.jp/dp/B004FI1570)、一見ものすごく怪しい製品だけど、SwitchBotに比べて1,000yen安い
 
 
-### Ubuntu 20.04 on RPi に hcitool をインストールする
+##### Ubuntu 20.04 on RPi に hcitool をインストールする
+
+hcitoolをUbuntu 20.04に入れる際に若干詰まった
+
+依存しているパッケージを導入してbluetoothに関するソフトウェアを適切に配置・設定する必要がある
 
 ```sh
 $ sudo apt-get update
@@ -164,6 +196,21 @@ $ sudo make
 $ sudo make install
 ```
 
+debian系だと同じように入れれると思う
+
+精度は...ちょっと低いかも。常に+2度くらいの温度が計測される
+
+[USB方向転換機](https://www.amazon.co.jp/gp/product/B01I1P14VE)とか使えば温度は逃がせそう
+
+## IoTに関する情報収集
+
+何かやろうと思ったことがあるときに踏み抜かれていないバグなどに遭遇し抜け出せずに失敗することもあるが、根気よく頑張れば成功したりもする
+
+一般的な知識などに関してはとにかくggrか、[TECHFEED](https://techfeed.io/stories)などの情報サイトで情報でIoTのタグをフォローしておくとかは忙しい人からすると結構良いと思う
+
+[SORACOM](https://soracom.jp/)などが主催するカンファレンスなどに参加する
+
+資格とかだと[IoTシステム技術検定](https://www.mcpc-jp.org/iotkentei/)とか...？（高いし民間試験なので持っているメリットが高いとは思わないけれど）
 
 ## 終わりに
 
@@ -174,6 +221,5 @@ $ sudo make install
 ところで実家の畑に複数種類の動物が出現して野菜を荒らしているらしい...
 
 これを踏まえてCompact-CASをベースに暗視できるようなセンサを用いて野外用監視カメラシステムを組んでみることを考えている
-
 
 

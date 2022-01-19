@@ -2,20 +2,26 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://www.okmt.dev/categories/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/tags/certification/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/categories/diary/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/docker/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/tags/linux/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/tags/lpic/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/posts/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/ccas/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/tags/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://www.okmt.dev/lpic1/</loc><lastmod>2021-08-29T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://www.okmt.dev/tags/docker/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://www.okmt.dev/categories/documentation/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://www.okmt.dev/tags/hugo/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://www.okmt.dev/hugo/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://www.okmt.dev/tags/onpremise/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>http://www.okmt.dev/tags/static-site-generator/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url></urlset>
+            <loc>http://www.okmt.dev/categories/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/tags/certification/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/categories/diary/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/tags/iot/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/iotcertificate/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/posts/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/tags/</loc><lastmod>2022-01-19T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://www.okmt.dev/tags/devops/</loc><lastmod>2021-11-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/docker/</loc><lastmod>2021-11-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/docker/</loc><lastmod>2021-11-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/infrastructure-as-code/</loc><lastmod>2021-11-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/linux/</loc><lastmod>2021-11-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/c-cas/</loc><lastmod>2021-10-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/onpremise/</loc><lastmod>2021-10-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/rasberry-pi/</loc><lastmod>2021-10-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/ccas/</loc><lastmod>2021-10-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/lpic/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/lpic1/</loc><lastmod>2021-09-01T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/hugo/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/hugo/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/static-site-generator/</loc><lastmod>2021-08-28T00:00:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://www.okmt.dev/tags/ci/cd/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

@@ -1,10 +1,24 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Onpremise - Tag - okmt&#39;s blogs</title>
+        <title>onpremise - Tag - okmt&#39;s blogs</title>
         <link>http://www.okmt.dev/tags/onpremise/</link>
-        <description>Onpremise - Tag - okmt&#39;s blogs</description>
+        <description>onpremise - Tag - okmt&#39;s blogs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>yuki.okamoto@okmt.dev (okmt)</managingEditor>
-            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</lastBuildDate><atom:link href="http://www.okmt.dev/tags/onpremise/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Fri, 01 Oct 2021 00:00:00 &#43;0900</lastBuildDate><atom:link href="http://www.okmt.dev/tags/onpremise/" rel="self" type="application/rss+xml" /><item>
+    <title>Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage</title>
+    <link>http://www.okmt.dev/ccas/</link>
+    <pubDate>Fri, 01 Oct 2021 00:00:00 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://www.okmt.dev/ccas/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/ccas/images/ccas.jpg" referrerpolicy="no-referrer">
+            </div>Compact-CAS (Compact-CameraAndStorage) 高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
+しかし、監視カメラの導入は初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
+さらに、昨今の人工知能分野の発展でデータさえあれば何か面白いことができてしまうのでできたりするのでデータはたくさん蓄えておきたい
+この大金の捻出はIoTの民主化で解決できる
+今日は安価に手元で監視カメラシステムを構築できるOSSの Compact-CAS を紹介したい
+Compact-CAS (Compact-CameraAndStorage)  This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e.]]></description>
+</item><item>
     <title>Hugoにテーマを適用し、自動ビルド後にNginxでデプロイするDocker環境を作る</title>
     <link>http://www.okmt.dev/hugo/</link>
     <pubDate>Sat, 28 Aug 2021 00:00:00 &#43;0900</pubDate>

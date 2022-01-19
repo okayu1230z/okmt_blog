@@ -4,57 +4,76 @@
         <link>http://www.okmt.dev/</link>
         <description>okmt&#39;s blogs</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>yuki.okamoto@okmt.dev (okmt)</managingEditor>
-            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</lastBuildDate>
+            <webMaster>yuki.okamoto@okmt.dev (okmt)</webMaster><lastBuildDate>Wed, 19 Jan 2022 00:00:00 &#43;0900</lastBuildDate>
             <atom:link href="http://www.okmt.dev/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Docker を学んでみよう（本読み感想含む）</title>
+    <title>IoTシステム技術検定 基礎・中級を取得した</title>
+    <link>http://www.okmt.dev/iotcertificate/</link>
+    <pubDate>Wed, 19 Jan 2022 00:00:00 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>http://www.okmt.dev/iotcertificate/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/iotcertificate/images/iot.png" referrerpolicy="no-referrer">
+            </div>IoTシステム技術検定について IoTに関して独学過ぎて体系的に学ぶ必要を勝手に感じたので適当に試験を調べてみて民間試験のIoTシステム技術検定を受けた
+この試験は基礎（受験料 11,000yen）・中級（15,400yen）・上級（55,000yen）とあるが、上級高すぎるので基礎と中級を受けることにした
+テキストは基礎ならIoT技術テキスト 基礎編、中級ならIoTシステム技術検定 中級
+一応公式テキストでこれ以外に参考書などはないので受験者は必須アイテムになるはず
+基礎はCBT試験だし、中級は筆記だけど試験問題は回収されるので過去問は出回っていない
+勉強方法 基本的には合否発表後も点数は発表されないので、自分が何点取ったのか分からないので目安が立てにくいのがこの試験の特徴。
+自身の体感では基礎は85%、中級は65%くらいの出来だったはず。巷で言われている合格点が60%程度ということなので中級は内心ヒヤヒヤだった。
+基礎は第11回試験の2021/11/27(土)、中級は第11回試験の2021/12/11(土)を受験した
+基本的に試験範囲が広くなるので（勉強した感じ出題範囲が細かくなる印象）、期間を開けずに基礎・中級を取り切るのがコツだと思っている
+IoTに従事している方や知見がある方は基礎は必要なく、中級だけでも良いかもしれない
+主はただのソフトウェアエンジニア1年生なのでまず基礎から受けることにしていた
+公式テキストをしっかり読んでいると落ちることはないはず
+テキストは全体的に重要で最後の方まで意外と細かいところから出題された印象なので、受験日前日までには1周読むのは必須としておきたい（実は1周も読めてなかったのは秘密）
+基礎は「VPN」の問題を落としたのがショックだった
+中級は「画像センサーの原理」「免許不要の無線局」の問題を落としたのが印象的だった
+だいぶ日が経過したときに記事を書いているので落とした問題についてしか覚えてない
+計算問題とかは皆無で知ってるか知ってないかの問題しか出ないので、当日までにIoTシステム技術検定用に脳内のメモリを用意しておくのが良い
+受験日前日・当日はピンポイントでここが出た気がするという感想文がネットに落ちてたりするので、そこでポイントを絞って頭に詰め込む
+ほぼ大学の期末のような感覚で噛み砕いていない文字列を頭に詰め込み、試験会場に着いて回答用紙に流し込む
+当初息巻いていた体系的にIoTを学ぶんだというプライドはもうない
+あとは1ヶ月後の合格発表を待つだけ。。
+ 初級はMCPCの名の下に「IoTアドバイザー」を名乗ることができる
+ 中級はMCPCの名の下に「IoTエキスパート」を名乗ることができる
+認定日同じだった。
+IoT検定 IoTに関する試験でIoTシステム技術検定とよく引き合いに出されるのはIoT検定という民間試験だけど、
+自分が見た感じIoTシステム技術検定に比べると試験の準備が遅れている印象で、なんか難易度の高い試験に関しては準備中だった。
+どっちでもよかったけど通信系の組織が運営してるのが刺さったのとなんか名前が強そうだったのでIoTシステム技術検定にした。
+総括 My name is IoT エキスパート, but 実装デキナイ。
+所詮資格なので実技が伴うようにちゃんと勉強し続けたいというこってす。]]></description>
+</item><item>
+    <title>Docker の基礎と学び方</title>
     <link>http://www.okmt.dev/docker/</link>
-    <pubDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</pubDate>
+    <pubDate>Mon, 01 Nov 2021 00:00:00 &#43;0900</pubDate>
     <author>Author</author>
     <guid>http://www.okmt.dev/docker/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/docker/images/docker.png" referrerpolicy="no-referrer">
-            </div>Docker と勉強方法 Docker とはなんぞや？
-Docker  公式のドキュメント   開発中のソフトウェアを他のエンジニアと共有したり、
-プロトタイプをサクッと試してもらいたい時などはもはや必須といえるんじゃなかろうか。
-無料だし（なんか最近有料化の流れもあるけど）
-この記事では、Docker の使い方と（ちょっと）仕組みと（ちょっと）周辺技術をまとめてみたのでそれらを紹介する
-書籍に書いてある内容とこの記事の中身は違うので気になる人は実際に読んでみてね
-参考書の紹介 docker docs
-公式の文章は重要なのですが、今回は言葉の定義を確認したいときなどを中心に辞書的に使いました。
-さわって学ぶクラウドインフラ docker基礎からのコンテナ構築 | 日経BP
-タイトルは&quot;クラウド&quot;に限定されているように見えるが中身はタイトルほど&quot;クラウド&quot;に限定していないように見える
-そもそも Docker は&quot;クラウド&quot;のためだけのインフラでないことは明確ですが、 それだけにこのタイトルの場合はもう少しクラウド取り扱っていても良かったのかなぁと
-内容的に少しだけ引っかかるところがあったのでそれは本記事の最後にまとめておくわね。
-図表は分かりやすかった！
-Docker | O&rsquo;REILLY
-難易度としては上の本よりも数段上にあり、Docker や Docker の構成要素を少し深くまで学習することができた
-Ansible や Trition などの Docker が関連するソフトウェアも幅広く紹介していて、知識の幅も広がる
-一方でポイントを絞って学ぶという観点では範囲が広すぎるので、 「俺は使うのに必要最小限の知識だけあればいいぜ！」という人には向いていないかも知れない本
-幅広く、でも重要なところは取りこぼしたくなので、上の本と組み合わせて学習することに
-結果、1ヶ月もせずあんなに知らんかった Docker の理解が確実に進んだのでこの学習方法は合う人には合うかも
-Docker まとめ Docker を使うと、host OS との resource 共有、Container の Portability、軽量なので実動環境そのままの分散システムを emulate できたりと、メリットたくさんあるよ
-Docker は scale-out が容易に行えるので micro service も use case として挙げられるよ]]></description>
+            </div>Dockerをある程度学んだので利用するメリット、最低限知っておきたい使い方と参考書物の感想をまとめてみたのでそれらを紹介する
+個人的にDockerが結構好きというのもあるが、初めて使ったときその手軽さにかなり驚いたのを覚えていて、本記事が布教に役立てばと思っている。
+Dockerとは？ Docker とはコンテナ化仮想化アプリケーション実行環境プラットフォームである。
+公式サイトから抜粋すると、Dockerは下のように説明されている。
+Docker  Docker takes away repetitive, mundane configuration tasks and is used throughout the development lifecycle for fast, easy and portable application development - desktop and cloud. Docker’s comprehensive end to end platform includes UIs, CLIs, APIs and security that are engineered to work together across the entire application delivery lifecycle.    高速で簡単でポータブル（fast, easy and portable）なアプリケーション開発環境として、開発ライフサイクル(development lifecycle)全体で利用できるよ 反復的な構築作業(mundane configuration tasks)から解放させてくれるよ DockerというプラットフォームはUI, CLI, API, セキュリティなどあらゆるデリバリーライフサイクルを包括的に提供できるよ  欲張りすぎな説明に見えるかもしれないが、言い過ぎではない。]]></description>
 </item><item>
     <title>Raspberry Piで完結する監視カメラシステム Compact-CameraAndStorage</title>
     <link>http://www.okmt.dev/ccas/</link>
-    <pubDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</pubDate>
+    <pubDate>Fri, 01 Oct 2021 00:00:00 &#43;0900</pubDate>
     <author>Author</author>
     <guid>http://www.okmt.dev/ccas/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/ccas/images/ccas.jpg" referrerpolicy="no-referrer">
-            </div>Compact-CAS (Compact-CameraAndStorage) 日本では、監視カメラシステムの設置は非常に高い
-高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
-さらに、昨今の人工知能分野の発展で画像さえあれば何か面白いことができてしまうのでできることならデータをたくさん蓄えておきたい
-さて、日本の製品としての監視カメラシステムはどれくらい高いのか？
-初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
-しかし、この大金の捻出はIoTの民主化で解決できる
-今日は Compact-CAS を紹介したい
+            </div>Compact-CAS (Compact-CameraAndStorage) 高齢化による空き巣の増加やコロナを考慮した外出自粛で監視カメラを設置する需要は増していると思う
+しかし、監視カメラの導入は初期費用で数万飛ぶだけでなく、データを貯めようとするとクラウドを利用したりして月額利用料なども支払う必要がある
+さらに、昨今の人工知能分野の発展でデータさえあれば何か面白いことができてしまうのでできたりするのでデータはたくさん蓄えておきたい
+この大金の捻出はIoTの民主化で解決できる
+今日は安価に手元で監視カメラシステムを構築できるOSSの Compact-CAS を紹介したい
 Compact-CAS (Compact-CameraAndStorage)  This is Compact-CAS (Compact-CameraAndStorage), which provides cameras, storage, and even a web service to check the data. Based on this manual, you can inexpensively build a surveillance camera system for which you want historical data. All you need is as simple as a single Linux machine (e.g. Ubuntu, Raspberry Pi OS), a camera (e.g. sensor type, USB connected), and storage (e.]]></description>
 </item><item>
     <title>LPIC level 1を取得した</title>
     <link>http://www.okmt.dev/lpic1/</link>
-    <pubDate>Sun, 29 Aug 2021 00:00:00 &#43;0900</pubDate>
+    <pubDate>Wed, 01 Sep 2021 00:00:00 &#43;0900</pubDate>
     <author>Author</author>
     <guid>http://www.okmt.dev/lpic1/</guid>
     <description><![CDATA[<div class="featured-image">
