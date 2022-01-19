@@ -11,7 +11,7 @@ license: "MIT"
 draft: false
 
 tags: [Static Site Generator, Hugo, Docker, Onpremise]
-categories: [Documentation]
+categories: [Diary]
 featuredImage: "/hugo/images/hugo.png"
 featuredImagePreview: "/hugo/images/hugo.png"
 
