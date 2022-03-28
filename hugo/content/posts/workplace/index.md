@@ -1,9 +1,9 @@
 ---
 title: "開発環境整備: GitLab/Mattermostをホスティングして立ててソフトウェア開発環境を構築しよう"
 subtitle: "GitLab/Mattermost"
-date: 2022-02-01T00:00:00+09:00
-lastmod: 2022-02-01T00:00:00+09:00
-publishDate: 2022-02-01T00:00:00+09:00
+date: 2022-04-01T00:00:00+09:00
+lastmod: 2022-04-01T00:00:00+09:00
+publishDate: 2022-04-01T00:00:00+09:00
 #author: "okmt"
 #authorLink: "okmtLink"
 #description: "okmtDesc"

@@ -1,9 +1,9 @@
 ---
 title: "LPIC level 2を取得した"
 subtitle: "Challenging LPIC level 2"
-date: 2022-03-01T00:00:00+09:00
-lastmod: 2022-03-01T00:00:00+09:00
-publishDate: 2022-03-01T00:00:00+09:00
+date: 2022-06-01T00:00:00+09:00
+lastmod: 2022-06-01T00:00:00+09:00
+publishDate: 2022-06-01T00:00:00+09:00
 #author: "okmt"
 #authorLink: "okmtLink"
 #description: "okmtDesc"

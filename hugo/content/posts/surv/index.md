@@ -1,9 +1,9 @@
 ---
 title: "システムにおける監視色々なソフトウェアをまとめてみた"
 subtitle: "Summary of computer system monitoring"
-date: 2022-02-01T00:00:00+09:00
-lastmod: 2022-02-01T00:00:00+09:00
-publishDate: 2022-02-01T00:00:00+09:00
+date: 2022-04-01T00:00:00+09:00
+lastmod: 2022-04-01T00:00:00+09:00
+publishDate: 2022-04-01T00:00:00+09:00
 #author: "okmt"
 #authorLink: "okmtLink"
 #description: "okmtDesc"
