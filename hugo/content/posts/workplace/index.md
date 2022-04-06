@@ -93,15 +93,17 @@ ConvDevは開発プロセスフロー全体において、グループメンバ�
 クラウドサービスに課金してしまったりすると手っ取り早いが、その場合は主にデータの置き場所という点とセキュリティという点で問題があると思う
 
 - データの置き場所: 顧客の同意が得られればどこでも良いが、大概の場合同意は得られないと思う。たとえば顧客データを取り扱う案件を受け入れるといったときに、許可なくクラウドサービスを利用して顧客が知らないサービスのログやデータベースにその情報が登録されてしまうことは企業秘密保持規定に反する場合がある
-- セキュリティ: クラウドサービスの場合、セキュリティが担保されているかどうかは利用するサービスに委ねられる 
+- セキュリティ: こちらも顧客の同意が得られればなんでも良いが、クラウドサービスの場合、セキュリティが担保されているかどうかは利用するサービスに委ねられる 
 
-このようにクラウドサービスを利用してその影響を懸念を気にするより、コントロールできる範囲に持ってくるのが望ましいと思うので、自分のネットワーク内でOSSを使ってサクッと構築してしまうのが良い
+このようにクラウドサービスを利用してその影響を懸念を気にするより、コントロールできる範囲に持ってくるのが望ましいと思うので、（規模にもよるが）まるっと解決したい場合は自分のネットワーク内でOSSを使ってサクッと構築してしまうのが良い
 
-今回、音声通話サービスはJitsi、チャットツールはMattermost、ソースコード管理はGitLabを構築してみたので、それぞれについてまとめてみた
+今回、音声通話サービスはJitsi、チャットツールはMattermost、ソースコード管理はGitLabを構築してみたので、皆さんの仕事場に導入する際の検討の一助になればと思い、それぞれについてまとめてみた
 
 ### Jitsi
 
 複数人での通話や映像共有などが可能な音声通話プラットフォーム
+
+{{< figure src="/workplace/images/jitsi.png" >}}
 
 [Jitsi](https://jitsi.org/)
 
@@ -124,6 +126,8 @@ Jitsiはユーザーごとの統計(ネットワークの状態、話してい�
 
 大規模運用も可能な自由度の高いビジネスチャットツール
 
+{{< figure src="/workplace/images/mattermost.png" >}}
+
 [Mattermost](https://mattermost.com/)
 
 必要スペック（規模によって必要になる傾向がある）
@@ -143,6 +147,8 @@ mattermostはこの次で紹介するGitLabと連携できたり、WebHookやBot
 
 GitHubライクな企業向けDevOpsプラットフォーム
 
+{{< figure src="/workplace/images/gitlab.png" >}}
+
 [GitLab](https://about.gitlab.com/?utm_medium=cpc&utm_source=google&utm_campaign=brand_apac_rtg_rsa_br_exact&utm_content=homepage_digital_x-rtg_english_&_bt=414669289199&_bk=gitlab&_bm=e&_bn=g&_bg=92195234843&gclid=CjwKCAjwopWSBhB6EiwAjxmqDcxwlgWPqb2Aqt57LWxgRjbR0AzEFPBiEMSLnCVd7DrHMUo4sHJbfhoCU74QAvD_BwE)
 
 
@@ -157,7 +163,13 @@ GitHubライクな企業向けDevOpsプラットフォーム
 
 GitHubとGitLabはお互いに影響を受けながら開発を進められているそうなので、GitHubを使ったことある方なら自然とGitLabの使い方もわかると思う。
 
-GitLabも適切な権限管理やソースコードレビュー機能やissue、マイルストーン、メモ機能なども豊富で使い勝手はGitHubと変わらない感じ
+GitLabも適切な権限管理やソースコードレビュー機能やissue、マイルストーン、メモ機能なども豊富で使い勝手はGitHubと変わらない
+
+昨今のDevOpsの潮流も味方して徐々に知名度を上げている印象
+
+{{< figure src="/workplace/images/devops.png" >}}
+
+GitLabはDevOpsを強力にサポートしているが、これについては概要レベルの内容を超えてくるのでここでは取り上げない
 
 ## 最後に
 
